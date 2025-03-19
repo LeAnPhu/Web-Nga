@@ -1,0 +1,20 @@
+:root {
+  --primary-color: #97D1E5;
+  --secondary-color: linear-gradient(45deg, #FFD700, #FFC107, #FFB300, #FFD700);
+  --background-dark: #242424;
+  --background-light: #ECECEC;
+  --text-color:  #34495E;
+  --text-highlight: #fff;
+  --button-color: #FFF0F5 !important;
+}
+
+ html{
+  height: 100%;
+} 
+
+body {
+  background: var(--background-dark);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+}
+

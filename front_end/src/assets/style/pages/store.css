@@ -1,0 +1,32 @@
+.btn_back {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold !important;
+    background-color: white !important;
+    transition: transform 0.3s ease;
+}
+
+.btn_back:hover {
+    color: var( --text-color) !important;
+    transform: scale(1.1);
+    box-shadow: 0 0 5px #FFC107, 0 0 10px #FFB300;
+}
+
+.btn_visit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold !important;
+    background-color: white !important;
+    transition: transform 0.3s ease;
+}
+
+.btn_visit:hover {
+    color: var( --text-color) !important;
+    transform: scale(1.1);
+    box-shadow: 0 0 5px #FFC107, 0 0 10px #FFB300;
+}

@@ -1,0 +1,22 @@
+.custom_search {
+    max-width: 500px !important; /* Giới hạn chiều rộng */
+    margin: 30px auto; /* Căn giữa */
+}
+
+.custom_search input {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.custom_search button {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.custom_search input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}

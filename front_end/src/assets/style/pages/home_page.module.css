@@ -1,0 +1,13 @@
+/* homepage.module.css */
+.cardHoverEffect:hover {
+    box-shadow: 5px 5px 5px 5px rgba(228, 241, 110, 0.774); 
+    background-color: #fff;
+  }
+  
+  .fixed_image {
+    max-width: 400px !important;
+    max-height: 300px !important;
+    object-fit: contain !important; 
+    display: block !important;   
+    margin: 0 auto;   
+}

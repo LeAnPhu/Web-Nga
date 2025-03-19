@@ -1,0 +1,28 @@
+.footer {
+    background: var(--primary-color);
+    padding: 20px 0;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 16px;
+    position: relative;
+  }
+  
+  .footer a {
+    text-decoration: none;
+    font-weight: bold;
+    background: var(--secondary-color); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .footer a:hover {
+    color: var( --text-highlight) !important;
+    text-shadow: 0 0 5px #FFC107, 0 0 10px #FFB300;
+  }
+
+  .footer_content{
+    color : var(--text-color);
+  }
+  

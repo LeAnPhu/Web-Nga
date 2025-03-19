@@ -1,0 +1,31 @@
+.favorite-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.favorite-icon:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Hiệu ứng hover của card */
+.cardHoverEffect:hover {
+    box-shadow: 10px 10px 20px rgba(26, 221, 19, 0.2);
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+}
+
+.fixed_image{
+    max-width: 100% !important;
+    height: 500px !important;
+    object-fit: contain !important;
+}

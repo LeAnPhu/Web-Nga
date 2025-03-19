@@ -1,0 +1,10 @@
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app__main {
+  margin-left: 240px;
+  flex-grow: 1;
+  background-color: #f1f1f1;
+}
