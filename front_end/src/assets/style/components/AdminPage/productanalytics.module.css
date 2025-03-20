@@ -1,0 +1,25 @@
+.product-analytics-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .product-analytics-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .product-analytics-card p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .recharts-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  

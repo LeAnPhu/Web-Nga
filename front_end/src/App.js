@@ -12,11 +12,11 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/*" element={<AppRouter />} />
-          <Route path="/admin/*" element={<AdminRoutes/>} />
+          <Route path="/admin/*" element={<AdminRoutes />} />
         </Routes>
       </div>
       <ButtonScroll />
-      <ChatWidget />
+      <ChatWidgetWrapper/>
       <FooterWrapper/>
     </Router>
   );
@@ -37,5 +37,12 @@ function FooterWrapper() {
   }
   return <Footer />;
 }
+
+function ChatWidgetWrapper() {
+  const location = useLocation();
+  const hideChat= ["/admin"]; 
+  return hideChat.some((route) => location.pathname.startsWith(route)) ? null : <ChatWidget/>;
+}
+
 
 export default App;
