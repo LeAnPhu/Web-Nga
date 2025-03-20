@@ -9,7 +9,7 @@ import LoginPage from '../pages/LoginPage';
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/home" element={<HomePage/>} />
+      <Route path="/" element={<HomePage/>} />
       <Route path="/about" element={<About/>} />
       <Route path ="/store" element ={<Store/>}/>
       <Route path ="/cart" element={<CartPage/>}/>
