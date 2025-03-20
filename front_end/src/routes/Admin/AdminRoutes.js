@@ -4,12 +4,15 @@ import { DashBoardAdmin, ManageUser, ManageShop, ManageProduct, ManageCategory }
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
-      <Route path="/admin/dashboard" element={<DashBoardAdmin />} />
-      <Route path="/admin/users" element={<ManageUser />} />
-      <Route path="/admin/shops" element={<ManageShop />} />
-      <Route path="/admin/products" element={<ManageProduct />} />
-      <Route path="/admin/categories" element={<ManageCategory />} />
+      
+      <Route index element={<Navigate to="/admin/dashboard" />} />
+      
+      {/* Các route chính của admin */}
+      <Route path="dashboard" element={<DashBoardAdmin />} />
+      <Route path="users" element={<ManageUser />} />
+      <Route path="shops" element={<ManageShop />} />
+      <Route path="products" element={<ManageProduct />} />
+      <Route path="categories" element={<ManageCategory />} />
     </Routes>
   );
 };

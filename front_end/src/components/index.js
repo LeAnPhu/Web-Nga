@@ -11,7 +11,7 @@ export { default as ButtonScroll } from './ButtonScroll';
 export { default as WishToast} from './WishToast';
 
 {/* Trang Admin */}
-export { default as Navbar } from './Admin/Navigate/Navbar';
+export { default as NavbarAdmin } from './Admin/Navigate/NavbarAdmin';
 export { default as Sidebar } from './Admin/Navigate/Sidebar';
 export { default as ProductTable } from './Admin/Sub/ProductTable';
 export { default as UserTable } from './Admin/Sub/UserTable';
