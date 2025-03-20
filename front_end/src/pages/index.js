@@ -1,5 +1,3 @@
-{/*Login*/}
-export {default as Login} from'./Login';
 {/*trang chinhs*/}
 export { default as HomePage } from './HomePage';
 export { default as About} from './About';
