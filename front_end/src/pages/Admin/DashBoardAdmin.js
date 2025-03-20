@@ -1,5 +1,5 @@
 import React from "react";
-import { Sidebar, NavbarAdmin, ShopAnalytics, ProductAnalytics, SalesChart } from "../../components"; 
+import { Sidebar, NavbarAdmin, ShopAnalytics, ProductAnalytics, SalesChart, CategoriesAdmin} from "../../components"; 
 
 const DashBoardAdmin = () => {
   return (
@@ -11,8 +11,8 @@ const DashBoardAdmin = () => {
         {/* Sidebar */}
         <Sidebar />
         
-        <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }}>
-          <h1 className="text-center">Dashboard Admin</h1>
+        <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }} className="mt-5">
+          <h1 className="text-center">Thống kê tổng quát</h1>
           <ShopAnalytics />
           <ProductAnalytics />
           <SalesChart />

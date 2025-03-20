@@ -8,6 +8,7 @@ import AdminRoutes from "./routes/Admin/AdminRoutes";
 function App() {
   return (
     <Router>
+      {/* <Route path="/login" element={<Login/>}/> */}
       <HeaderWrapper />
       <div className="App">
         <Routes>

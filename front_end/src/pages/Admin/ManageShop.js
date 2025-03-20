@@ -8,7 +8,7 @@ const ManageShop = () => {
       <NavbarAdmin/>
         <div style={{ display: "flex" }}>
           <Sidebar />
-            <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }}>
+            <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }} className="mt-5">
             <h1 className="text-center">Quản lý Cửa hàng</h1>
           <ShopTable />
         </div>

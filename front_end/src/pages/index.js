@@ -1,3 +1,5 @@
+{/*Login*/}
+export {default as Login} from'./Login';
 {/*trang chinhs*/}
 export { default as HomePage } from './HomePage';
 export { default as About} from './About';
@@ -11,6 +13,7 @@ export { default as ManageCategory } from './Admin/ManageCategory';
 export { default as ManageProduct } from './Admin/ManageProduct';
 export { default as ManageShop } from './Admin/ManageShop';
 export { default as ManageUser } from './Admin/ManageUser';
+
 
 {/*trang Shop*/}
 export { default as DashBoardShop} from './Shop/DashBoardShop';
