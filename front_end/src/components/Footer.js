@@ -17,7 +17,7 @@ const Footer = () => {
               <h5>Quick Links</h5>
               <ul className="list-unstyled">
               <li className="mx-3">
-            <Link to="/home" className={styles.navLink}>
+            <Link to="/" className={styles.navLink}>
               Trang chủ
             </Link>
           </li>

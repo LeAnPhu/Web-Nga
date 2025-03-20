@@ -38,7 +38,7 @@ const CartPage = () => {
      const navigate = useNavigate(); 
     
       const handleBackToHome = () => {
-        navigate("/home"); 
+        navigate("/"); 
       };
       const handleToCart = () => {
         navigate("/store"); 

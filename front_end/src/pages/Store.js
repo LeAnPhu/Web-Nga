@@ -85,7 +85,7 @@ const Store = () => {
   const navigate = useNavigate(); 
 
   const handleBackToHome = () => {
-    navigate("/home"); 
+    navigate("/"); 
   };
   const handleToCart = () => {
     navigate("/cart"); 
