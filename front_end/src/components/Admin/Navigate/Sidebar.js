@@ -39,11 +39,8 @@ const Sidebar = () => {
         <Link to="/admin/products" className={styles.link}>
           <GiClothes /> {!isClosed && "Sản phẩm"}
         </Link>
-        <Link to="/admin/coupons" className={styles.link}>
-          <RiCoupon3Fill /> {!isClosed && "Mã giảm giá"}
-        </Link>
-        <Link to="/admin/sales" className={styles.link}>
-          <IoBarChartSharp /> {!isClosed && "Biểu đồ bán hàng"}
+        <Link to="/admin/categories" className={styles.link}>
+          <IoBarChartSharp /> {!isClosed && "Danh Mục"}
         </Link>
       </div>
     </Container>
