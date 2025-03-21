@@ -11,7 +11,7 @@ const OrderDetail = ({ show, order, onClose }) => {
       </Modal.Header>
       <Modal.Body>
         <p><strong>Khách hàng:</strong> {order.customer}</p>
-        <p><strong>Tổng tiền:</strong> {order.total.toLocaleString()} VND</p>
+        <p><strong>Tổng tiền:</strong> {order.total.toLocaleString()} đ</p>
         <p><strong>Trạng thái:</strong> {order.status}</p>
       </Modal.Body>
       <Modal.Footer>

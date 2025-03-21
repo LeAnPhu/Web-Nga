@@ -3,79 +3,79 @@ import { Container, Row, Col, Button, Nav } from "react-bootstrap";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { IoStorefrontOutline } from "react-icons/io5";
 import {  useNavigate, Link  } from "react-router-dom";
-import styles from "../assets/style/pages/store.css";
+import styles from "../../assets/style/pages/store.css";
 
 const stores = [
   {
     id: 1,
     name: "Balenciaga Store",
-    img: require("../assets/image/logo_store/balan.png"),
+    img: require("../../assets/image/logo_store/balan.png"),
     description: "Balenciaga is a luxury fashion brand known for its high-end clothing, accessories, and shoes.",
     productTypes: ["Clothing", "Shoes", "Accessories"],
     products: [
-      { name: "Balenciaga Sneakers", img: require("../assets/image/item/item_1.jpg") },
-      { name: "Balenciaga Hoodie", img: require("../assets/image/item/item_2.jpg") },
-      { name: "Balenciaga Sunglasses", img: require("../assets/image/item/item_3.jpg") }
+      { name: "Balenciaga Sneakers", img: require("../../assets/image/item/item_1.jpg") },
+      { name: "Balenciaga Hoodie", img: require("../../assets/image/item/item_2.jpg") },
+      { name: "Balenciaga Sunglasses", img: require("../../assets/image/item/item_3.jpg") }
     ]
   },
   {
     id: 2,
     name: "Nike Store",
-    img: require("../assets/image/logo_store/nike.png"),
+    img: require("../../assets/image/logo_store/nike.png"),
     description: "Nike is a globally recognized brand that specializes in sportswear, shoes, and athletic gear.",
     productTypes: ["Sportswear", "Shoes", "Accessories"],
     products: [
-      { name: "Nike Air Max", img: require("../assets/image/item/item_2.jpg") },
-      { name: "Nike T-Shirt", img: require("../assets/image/item/item_3.jpg") },
-      { name: "Nike Backpack", img: require("../assets/image/item/item_4.jpg") }
+      { name: "Nike Air Max", img: require("../../assets/image/item/item_2.jpg") },
+      { name: "Nike T-Shirt", img: require("../../assets/image/item/item_3.jpg") },
+      { name: "Nike Backpack", img: require("../../assets/image/item/item_4.jpg") }
     ]
   },
   {
     id: 3,
     name: "Adidas Store",
-    img: require("../assets/image/logo_store/adidas.png"),
+    img: require("../../assets/image/logo_store/adidas.png"),
     description: "Adidas is a leading brand in sportswear and lifestyle products, famous for shoes, shirts, and accessories.",
     productTypes: ["Sportswear", "Shoes", "Accessories"],
     products: [
-      { name: "Adidas Ultraboost", img: require("../assets/image/item/item_1.jpg") },
-      { name: "Adidas Tracksuit", img: require("../assets/image/item/item_4.jpg") },
-      { name: "Adidas Cap", img: require("../assets/image/item/item_3.jpg") }
+      { name: "Adidas Ultraboost", img: require("../../assets/image/item/item_1.jpg") },
+      { name: "Adidas Tracksuit", img: require("../../assets/image/item/item_4.jpg") },
+      { name: "Adidas Cap", img: require("../../assets/image/item/item_3.jpg") }
     ]
   },
   {
     id: 4,
     name: "Rick Owen Store",
-    img: require("../assets/image/logo_store/rick_owen.png"),
+    img: require("../../assets/image/logo_store/rick_owen.png"),
     description: "Adidas is a leading brand in sportswear and lifestyle products, famous for shoes, shirts, and accessories.",
     productTypes: ["Sportswear", "Shoes", "Accessories"],
     products: [
-      { name: "Adidas Ultraboost", img: require("../assets/image/item/item_1.jpg") },
-      { name: "Adidas Tracksuit", img: require("../assets/image/item/item_4.jpg") },
-      { name: "Adidas Cap", img: require("../assets/image/item/item_3.jpg") }
+      { name: "Adidas Ultraboost", img: require("../../assets/image/item/item_1.jpg") },
+      { name: "Adidas Tracksuit", img: require("../../assets/image/item/item_4.jpg") },
+      { name: "Adidas Cap", img: require("../../assets/image/item/item_3.jpg") }
     ]
   },
   {
     id: 5,
     name: "Rick Owen Store",
-    img: require("../assets/image/logo_store/rick_owen.png"),
+    img: require("../../assets/image/logo_store/rick_owen.png"),
     description: "Adidas is a leading brand in sportswear and lifestyle products, famous for shoes, shirts, and accessories.",
     productTypes: ["Sportswear", "Shoes", "Accessories"],
     products: [
-      { name: "Adidas Ultraboost", img: require("../assets/image/item/item_1.jpg") },
-      { name: "Adidas Tracksuit", img: require("../assets/image/item/item_4.jpg") },
-      { name: "Adidas Cap", img: require("../assets/image/item/item_3.jpg") }
+      { name: "Adidas Ultraboost", img: require("../../assets/image/item/item_1.jpg") },
+      { name: "Adidas Tracksuit", img: require("../../assets/image/item/item_4.jpg") },
+      { name: "Adidas Cap", img: require("../../assets/image/item/item_3.jpg") }
     ]
   },
   {
     id: 6,
     name: "Rick Owen Store",
-    img: require("../assets/image/logo_store/rick_owen.png"),
+    img: require("../../assets/image/logo_store/rick_owen.png"),
     description: "Adidas is a leading brand in sportswear and lifestyle products, famous for shoes, shirts, and accessories.",
     productTypes: ["Sportswear", "Shoes", "Accessories"],
     products: [
-      { name: "Adidas Ultraboost", img: require("../assets/image/item/item_1.jpg") },
-      { name: "Adidas Tracksuit", img: require("../assets/image/item/item_4.jpg") },
-      { name: "Adidas Cap", img: require("../assets/image/item/item_3.jpg") }
+      { name: "Adidas Ultraboost", img: require("../../assets/image/item/item_1.jpg") },
+      { name: "Adidas Tracksuit", img: require("../../assets/image/item/item_4.jpg") },
+      { name: "Adidas Cap", img: require("../../assets/image/item/item_3.jpg") }
     ]
   },
   

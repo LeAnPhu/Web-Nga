@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { BiMessageDetail, BiX, BiSend } from "react-icons/bi";
-import styles from "../assets/style/components/chat_widget.module.css";
+import styles from "../../assets/style/components/chat_widget.module.css";
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);

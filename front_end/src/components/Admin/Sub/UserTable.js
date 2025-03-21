@@ -96,7 +96,6 @@ const UserTable = () => {
       {/* Ô tìm kiếm */}
       <InputGroup className="mb-3">
         <Form.Control type="text" placeholder="🔍 Tìm kiếm..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        <Button variant="primary" onClick={() => setShowModal(true)}>+ Thêm</Button>
       </InputGroup>
 
       {/* Bảng người dùng */}
@@ -152,29 +151,6 @@ const UserTable = () => {
 
       {/* Phân trang nâng cao */}
       {renderPagination()}
-
-      {/* Modal thêm người dùng */}
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Thêm Người Dùng</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Tên</Form.Label>
-              <Form.Control type="text" value={newUser.name} onChange={(e) => setNewUser({ ...newUser, name: e.target.value })} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" value={newUser.email} onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>Hủy</Button>
-          <Button variant="primary" onClick={handleAddUser}>Thêm</Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 };

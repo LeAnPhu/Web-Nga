@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const OrderAction = ({ onAdd }) => {
+const CouponAction = ({ onAdd }) => {
   return (
     <Button variant="success" onClick={onAdd}>
-      + Thêm đơn hàng
+      Thêm Mã Giảm Giá
     </Button>
   );
 };
 
-export default OrderAction;
+export default CouponAction;

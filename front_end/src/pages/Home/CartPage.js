@@ -6,33 +6,33 @@ import { CgMathPlus } from "react-icons/cg";
 import { CgMathMinus } from "react-icons/cg";
 import {  useNavigate} from "react-router-dom";
 import { AiTwotoneDelete } from "react-icons/ai";
-import styles from "../assets/style/pages/cart_page.css";
+import styles from "../../assets/style/pages/cart_page.css";
 const products = [
-    { id: 1, name: "Áo Thun Nam", price: "299.000Đ",  img: require("../assets/image/item/item_5.jpg"), quanlity : 2, size: 36, color : "red"},
-    { id: 2, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg") , quanlity : 1, size: 38, color : "white"},
-    { id: 3, name: "Áo Khoác", price: "799.000Đ", img: require("../assets/image/item/item_2.jpg") ,  quanlity : 5 , size:40, color : "white"},
-    { id: 4, name: "Giày Sneaker", price: "999.000Đ", img: require("../assets/image/item/item_3.jpg"), quanlity : 3, size : 39, color : "blue"},
-    { id: 5, name: "Áo Thun Nam", price: "299.000Đ",img: require("../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
-    { id: 6, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
-    { id: 7, name: "Áo Thun Nam", price: "299.000Đ",img: require("../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
-    { id: 8, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
-    { id: 9, name: "Áo Thun Nam", price: "299.000Đ",img: require("../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
-    { id: 10, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
-    { id: 11, name: "Áo Thun Nam", price: "299.000Đ",img: require("../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
-    { id: 12, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
+    { id: 1, name: "Áo Thun Nam", price: "299.000Đ",  img: require("../../assets/image/item/item_5.jpg"), quanlity : 2, size: 36, color : "red"},
+    { id: 2, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg") , quanlity : 1, size: 38, color : "white"},
+    { id: 3, name: "Áo Khoác", price: "799.000Đ", img: require("../../assets/image/item/item_2.jpg") ,  quanlity : 5 , size:40, color : "white"},
+    { id: 4, name: "Giày Sneaker", price: "999.000Đ", img: require("../../assets/image/item/item_3.jpg"), quanlity : 3, size : 39, color : "blue"},
+    { id: 5, name: "Áo Thun Nam", price: "299.000Đ",img: require("../../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
+    { id: 6, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
+    { id: 7, name: "Áo Thun Nam", price: "299.000Đ",img: require("../../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
+    { id: 8, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
+    { id: 9, name: "Áo Thun Nam", price: "299.000Đ",img: require("../../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
+    { id: 10, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
+    { id: 11, name: "Áo Thun Nam", price: "299.000Đ",img: require("../../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
+    { id: 12, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
 ];
 const newProducts = [
-    { id: 1, name: "Áo Thun Nam", price: "299.000Đ",  img: require("../assets/image/item/item_5.jpg"), quanlity : 2, size: 36, color : "red"},
-    { id: 2, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg") , quanlity : 1, size: 38, color : "white"},
-    { id: 3, name: "Áo Khoác", price: "799.000Đ", img: require("../assets/image/item/item_2.jpg") ,  quanlity : 5 , size:40, color : "white"},
-    { id: 4, name: "Giày Sneaker", price: "999.000Đ", img: require("../assets/image/item/item_3.jpg"), quanlity : 3, size : 39, color : "blue"},
-    { id: 5, name: "Áo Thun Nam", price: "299.000Đ",img: require("../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
-    { id: 6, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
-    { id: 7, name: "Áo Thun Nam", price: "299.000Đ",img: require("../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
-    { id: 8, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
-    { id: 9, name: "Áo Thun Nam", price: "299.000Đ",img: require("../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
-    { id: 10, name: "Quần Jeans", price: "499.000Đ", img: require("../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
-    { id: 11, name: "Áo Thun Nam", price: "299.000Đ",img: require("../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
+    { id: 1, name: "Áo Thun Nam", price: "299.000Đ",  img: require("../../assets/image/item/item_5.jpg"), quanlity : 2, size: 36, color : "red"},
+    { id: 2, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg") , quanlity : 1, size: 38, color : "white"},
+    { id: 3, name: "Áo Khoác", price: "799.000Đ", img: require("../../assets/image/item/item_2.jpg") ,  quanlity : 5 , size:40, color : "white"},
+    { id: 4, name: "Giày Sneaker", price: "999.000Đ", img: require("../../assets/image/item/item_3.jpg"), quanlity : 3, size : 39, color : "blue"},
+    { id: 5, name: "Áo Thun Nam", price: "299.000Đ",img: require("../../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
+    { id: 6, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
+    { id: 7, name: "Áo Thun Nam", price: "299.000Đ",img: require("../../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
+    { id: 8, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
+    { id: 9, name: "Áo Thun Nam", price: "299.000Đ",img: require("../../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
+    { id: 10, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg")  , quanlity: 4, size : 38, color : "black"},
+    { id: 11, name: "Áo Thun Nam", price: "299.000Đ",img: require("../../assets/image/item/item_4.jpg")  , quanlity: 6 , size : 36, color : "green"},
 ];
 const CartPage = () => {  
      const navigate = useNavigate(); 
@@ -154,7 +154,7 @@ const CartPage = () => {
             <hr/>
 
             <Row className="mt-5">
-                   <img src={require("../assets/image/banner/banner_6.jpg")}/>
+                   <img src={require("../../assets/image/banner/banner_6.jpg")}/>
             </Row>
 
              <Row className="mt-5 newArrival position-relative">

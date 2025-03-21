@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import { NavbarShop, SideBarShop } from "../../components/index";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import { OrderList, OrderFilter, OrderDetail, OrderAction } from "../../components";
-
-
-
+import { OrderList, OrderFilter, OrderDetail} from "../../components";
+import styles from "../../assets/style/pages/Shop/order.module.css";
 const initialOrders = [
   { id: 1, customer: "John Doe", total: 100000, status: "Đang xử lý" },
   { id: 2, customer: "Jane Smith", total: 250000, status: "Hoàn thành" },
   { id: 3, customer: "Alice Brown", total: 180000, status: "Đang vận chuyển" },
+  { id: 4, customer: "John Doe", total: 100000, status: "Đang xử lý" },
+  { id: 5, customer: "Jane Smith", total: 250000, status: "Hoàn thành" },
+  { id: 6, customer: "Alice Brown", total: 180000, status: "Đang vận chuyển" },
+  { id: 7, customer: "John Doe", total: 100000, status: "Đang xử lý" },
+  { id: 8, customer: "Jane Smith", total: 250000, status: "Hoàn thành" },
+  { id: 9, customer: "Alice Brown", total: 180000, status: "Đang vận chuyển" },
+  { id: 10, customer: "John Doe", total: 100000, status: "Đang xử lý" },
+  { id: 11, customer: "Jane Smith", total: 250000, status: "Hoàn thành" },
+  { id: 12, customer: "Alice Brown", total: 180000, status: "Đang vận chuyển" },
+  { id: 13, customer: "John Doe", total: 100000, status: "Đang xử lý" },
+  { id: 14, customer: "Jane Smith", total: 250000, status: "Hoàn thành" },
+  { id: 15, customer: "Alice Brown", total: 180000, status: "Đang vận chuyển" },
+  { id: 16, customer: "John Doe", total: 100000, status: "Đang xử lý" },
+  { id: 17, customer: "Jane Smith", total: 250000, status: "Hoàn thành" },
+  { id: 18, customer: "Alice Brown", total: 180000, status: "Đang vận chuyển" },
+  { id: 19, customer: "John Doe", total: 100000, status: "Đang xử lý" },
+  { id: 20, customer: "Jane Smith", total: 250000, status: "Hoàn thành" },
+  { id: 21, customer: "Alice Brown", total: 180000, status: "Đang vận chuyển" },
 ];
 
 const ManageOrderShop = () => {
@@ -16,16 +32,6 @@ const ManageOrderShop = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [filterStatus, setFilterStatus] = useState("");
 
-  // Thêm đơn hàng
-  const handleAddOrder = () => {
-    const newOrder = {
-      id: orders.length + 1,
-      customer: `Khách hàng ${orders.length + 1}`,
-      total: Math.floor(Math.random() * 500000) + 50000,
-      status: "Đang xử lý",
-    };
-    setOrders([...orders, newOrder]);
-  };
 
   // Xem chi tiết đơn hàng
   const handleViewOrder = (order) => {
@@ -37,6 +43,33 @@ const ManageOrderShop = () => {
     setOrders(orders.filter((order) => order.id !== id));
   };
 
+  // Hủy đơn hàng
+  const handleCancelOrder = (id) => {
+    setOrders(
+      orders.map((order) =>
+        order.id === id ? { ...order, status: "Đã hủy" } : order
+      )
+    );
+  };
+
+  // Tiến hành giao hàng
+  const handleShipOrder = (id) => {
+    setOrders(
+      orders.map((order) =>
+        order.id === id ? { ...order, status: "Đang vận chuyển" } : order
+      )
+    );
+  };
+
+  // Xác nhận hoàn thành đơn hàng
+  const handleCompleteOrder = (id) => {
+    setOrders(
+      orders.map((order) =>
+        order.id === id ? { ...order, status: "Hoàn thành" } : order
+      )
+    );
+  };
+
   // Lọc đơn hàng theo trạng thái
   const filteredOrders = filterStatus
     ? orders.filter((order) => order.status === filterStatus)
@@ -45,16 +78,24 @@ const ManageOrderShop = () => {
   return (
     <div>
       <NavbarShop />
-      <div style={{ display: "flex" }}>
-        <SideBarShop />
+      <SideBarShop />
+      <div style={{ display: "flex" }} className={styles.order_container}>
         <Container>
           <Card className="p-3">
             <h2 className="h4 fw-bold">Quản lý Đơn hàng</h2>
             <Row className="mb-3">
-              <Col><OrderFilter filterStatus={filterStatus} setFilterStatus={setFilterStatus} /></Col>
-              <Col className="text-end"><OrderAction onAdd={handleAddOrder} /></Col>
+              <Col>
+                <OrderFilter filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
+              </Col>
             </Row>
-            <OrderList orders={filteredOrders} onView={handleViewOrder} onDelete={handleDeleteOrder} />
+            <OrderList
+              orders={filteredOrders}
+              onView={handleViewOrder}
+              onDelete={handleDeleteOrder}
+              onCancel={handleCancelOrder}
+              onShip={handleShipOrder}
+              onComplete={handleCompleteOrder}
+            />
           </Card>
         </Container>
       </div>
