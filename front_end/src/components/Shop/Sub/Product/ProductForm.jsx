@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 
 const ProductForm = ({ show, onClose, onSave, editingProduct }) => {
-  const [product, setProduct] = useState({ id: "", name: "",category : "" , price: "", image: "", status: "Còn hàng", rating: 0 });
+  const [product, setProduct] = useState({ id: "", name: "",category : "" , price: "", img: "", status: "Còn hàng", rating: 0 });
 
   useEffect(() => {
     if (editingProduct) {
       setProduct(editingProduct);
     } else {
-      setProduct({ id: "", name: "",category : "" , price: "", image: "", status: "Còn hàng", rating: 0 });
+      setProduct({ id: "", name: "",category : "" , price: "", img: "", status: "Còn hàng", rating: 0 });
     }
   }, [editingProduct]);
 
@@ -69,7 +69,7 @@ const ProductForm = ({ show, onClose, onSave, editingProduct }) => {
           <Form.Group className="mb-3">
             <Form.Label>Ảnh sản phẩm</Form.Label>
             <Form.Control type="file" onChange={handleImageChange} />
-            {product.image && <img src={product.image} alt="Preview" style={{ width: "100px", marginTop: "10px" }} />}
+            {product.img && <img src={product.img} alt="Preview" style={{ width: "100px", marginTop: "10px" }} />}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Trạng thái</Form.Label>

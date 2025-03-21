@@ -6,6 +6,21 @@ const CategoriesAdmin = () => {
     { id: 1, name: "Giày thể thao" },
     { id: 2, name: "Áo khoác" },
     { id: 3, name: "Quần jeans" },
+    { id: 4, name: "Giày Adidas" },
+    { id: 5, name: "Áo khoác" },
+    { id: 6, name: "Quần jeans" },
+    { id: 7, name: "Giày thể thao" },
+    { id: 8, name: "Áo khoác" },
+    { id: 9, name: "Quần jeans" },
+    { id: 10, name: "Giày thể thao" },
+    { id: 11, name: "Áo khoác" },
+    { id: 12, name: "Quần jeans" },
+    { id: 13, name: "Giày thể thao" },
+    { id: 14, name: "Áo khoác" },
+    { id: 15, name: "Quần jeans" },
+    { id: 16, name: "Giày thể thao" },
+    { id: 17, name: "Áo khoác" },
+    { id: 18, name: "Quần jeans" },
   ]);
 
   const [newCategory, setNewCategory] = useState("");

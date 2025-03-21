@@ -78,27 +78,29 @@ const ManageOrderShop = () => {
   return (
     <div>
       <NavbarShop />
-      <SideBarShop />
-      <div style={{ display: "flex" }} className={styles.order_container}>
-        <Container>
-          <Card className="p-3">
-            <h2 className="h4 fw-bold">Quản lý Đơn hàng</h2>
-            <Row className="mb-3">
-              <Col>
-                <OrderFilter filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
-              </Col>
-            </Row>
-            <OrderList
-              orders={filteredOrders}
-              onView={handleViewOrder}
-              onDelete={handleDeleteOrder}
-              onCancel={handleCancelOrder}
-              onShip={handleShipOrder}
-              onComplete={handleCompleteOrder}
-            />
-          </Card>
-        </Container>
-      </div>
+        <div style={{ display: "flex" }} >
+            <SideBarShop />
+            <div style={{ marginLeft: "250px", marginTop:'70px',padding: "50px", width: "100%" }}>
+              <h1 className="text-center">Đơn hàng</h1>
+              <Container >
+                <Card className="p-3">
+                  <Row className="mb-3">
+                    <Col>
+                      <OrderFilter filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
+                    </Col>
+                  </Row>
+                  <OrderList
+                    orders={filteredOrders}
+                    onView={handleViewOrder}
+                    onDelete={handleDeleteOrder}
+                    onCancel={handleCancelOrder}
+                    onShip={handleShipOrder}
+                    onComplete={handleCompleteOrder}
+                  />
+                </Card>
+              </Container>
+          </div>
+        </div>
       <OrderDetail show={!!selectedOrder} order={selectedOrder} onClose={() => setSelectedOrder(null)} />
     </div>
   );

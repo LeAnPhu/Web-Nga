@@ -5,14 +5,22 @@ const ProductItem = ({ product, onEdit, onDelete }) => {
   return (
     <tr>
       <td>
-        <img src={product.image} alt={product.name} style={{ width: "50px", height: "50px", objectFit: "cover" }} />
+          {product.img ? (
+          <img
+            src={product.img}
+            alt={product.name}
+            style={{ width: "250px", height: "300px",}}
+          />
+              ) : (
+          <span>Không có ảnh</span>
+          )}
       </td>
-      <td>{product.name}</td>
-      <td>{product.category}</td>
-      <td>{product.price.toLocaleString()} đ</td>
-      <td>{product.status}</td>
-      <td>⭐ {product.rating} / 5</td>
-      <td>
+      <td className="text-center align-middle">{product.name}</td>
+      <td className="text-center align-middle">{product.category}</td>
+      <td className="text-center align-middle">{product.price.toLocaleString()} đ</td>
+      <td className="text-center align-middle">{product.status}</td>
+      <td className="text-center align-middle ">⭐ {product.rating} / 5</td>
+      <td className="text-center align-middle">
         <Button variant="warning" size="sm" onClick={() => onEdit(product)}>Sửa</Button>{" "}
         <Button variant="danger" size="sm" onClick={() => onDelete(product.id)}>Xóa</Button>
       </td>
