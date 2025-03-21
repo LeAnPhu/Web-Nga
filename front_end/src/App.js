@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import { Header,HeaderChil,Footer, ChatWidget, ButtonScroll } from "./components";
 import AppRouter from "./routes/AppRouter";
 import AdminRoutes from "./routes/Admin/AdminRoutes";
-
+import ShopRouter from "./routes/Shop/ShopRouter";
 function App() {
   return (
     <Router>
@@ -14,10 +14,11 @@ function App() {
         <Routes>
           <Route path="/*" element={<AppRouter />} />
           <Route path="/admin/*" element={<AdminRoutes />} />
+          <Route path="/shop/*" element={<ShopRouter />} />
         </Routes>
       </div>
       <ButtonScroll />
-      <ChatWidgetWrapper/>
+      <ChatWidget/>
       <FooterWrapper/>
     </Router>
   );
@@ -26,24 +27,17 @@ function App() {
 // Ẩn Header ở một số trang
 function HeaderWrapper() {
   const location = useLocation();
-  const hideHeaderRoutes = ["/store", "/cart", "/admin"]; 
+  const hideHeaderRoutes = ["/store", "/cart", "/admin" ,"/shop"]; 
   return hideHeaderRoutes.some((route) => location.pathname.startsWith(route)) ? null : <Header />;
 }
 
 function FooterWrapper() {
   const location = useLocation();
-  const hideFooterRoutes = ["/admin/*"];
-  if (hideFooterRoutes.includes(location.pathname) || location.pathname.startsWith("/admin")) {
+  const hideFooterRoutes = ["/admin/*", "/shop/*"];
+  if (hideFooterRoutes.includes(location.pathname) || location.pathname.startsWith("/admin") || location.pathname.startsWith("/shop")) {
     return ;
   }
   return <Footer />;
 }
-
-function ChatWidgetWrapper() {
-  const location = useLocation();
-  const hideChat= ["/admin"]; 
-  return hideChat.some((route) => location.pathname.startsWith(route)) ? null : <ChatWidget/>;
-}
-
 
 export default App;

@@ -15,26 +15,20 @@
   .logo {
     font-size: 30px;
     font-weight: bold;
+    transition: 0.3s ease-in-out;
+  }
+
+  .logo:hover {
+    background-color: #f39c12;
+    border-radius: 20px;
+    transform: scale(1.1);
   }
   
   .link {
     color: #fff;
     text-decoration: none;
   }
-  
-  .searchBox {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .searchInput {
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-    width: 250px;
-  }
-  
+
   .userActions {
     display: flex;
     gap: 15px;

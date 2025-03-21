@@ -12,12 +12,6 @@ const NavbarAdmin = () => {
             Quản trị viên 
         </Link>
       </div>
-
-      {/* Search Bar */}
-      <div className={styles.searchBox}>
-        <input type="text" placeholder="Tìm kiếm..." className={styles.searchInput} />
-      </div>
-
       {/* User Actions */}
       <div className={styles.userActions}>
         <Link to="/admin/profile" className={styles.icon}>
