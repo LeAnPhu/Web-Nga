@@ -1,15 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import { DashBoardShop,ManageOrderShop, ManageCouponShop, ManageProductShop } from "../pages";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { DashBoardShop,ManageOrderShop, ManageCouponShop, ManageProductShop } from "../../pages";
 
-const AdminRoutes = () => {
+const ShopRouter = () => {
   return (
     <Routes>
-      <Route path="/shop/dashboard" element={<DashBoardShop />} />
-      <Route path="/shop/orders" element={<ManageOrderShop />} />
-      <Route path="/shop/coupons" element={<ManageCouponShop />} />
-      <Route path="/shop/products" element={<ManageProductShop/>} />
+        <Route index element={<Navigate to="/shop/dashboard" />} />
+      <Route path="dashboard" element={<DashBoardShop />} />
+      <Route path="orders" element={<ManageOrderShop />} />
+      <Route path="coupons" element={<ManageCouponShop />} />
+      <Route path="products" element={<ManageProductShop/>} />
     </Routes>
   );
 };
 
-export default AdminRoutes;
+export default ShopRouter;

@@ -1,7 +1,8 @@
 import React from "react";
-import { Sidebar, NavbarAdmin, ShopAnalytics, ProductAnalytics, SalesChart, CategoriesAdmin} from "../../components"; 
+import { Sidebar, NavbarAdmin, ShopAnalytics, ProductAnalytics, SalesChart} from "../../components"; 
 
 const DashBoardAdmin = () => {
+  console.log("DashBoardShop rendered!");
   return (
     <div>
       {/* Navbar */}
@@ -14,7 +15,7 @@ const DashBoardAdmin = () => {
         <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }} className="mt-5">
           <h1 className="text-center">Thống kê tổng quát</h1>
           <ShopAnalytics />
-          <ProductAnalytics />
+          <ProductAnalytics/>
           <SalesChart />
         </div>
       </div>
