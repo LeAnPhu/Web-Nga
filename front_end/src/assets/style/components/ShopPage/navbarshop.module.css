@@ -1,0 +1,48 @@
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .logo:hover {
+    background-color: #f39c12;
+    border-radius: 20px;
+    transform: scale(1.1);
+  }
+  
+  .link {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .userActions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .icon {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .icon:hover {
+    color: #f39c12;
+  }
+  

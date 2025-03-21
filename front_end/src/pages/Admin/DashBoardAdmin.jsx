@@ -12,7 +12,7 @@ const DashBoardAdmin = () => {
         {/* Sidebar */}
         <Sidebar />
         
-        <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }} className="mt-5">
+        <div style={{ marginLeft: "250px", padding: "50px", width: "100%" }} className="mt-5">
           <h1 className="text-center">Thống kê tổng quát</h1>
           <ShopAnalytics />
           <ProductAnalytics/>

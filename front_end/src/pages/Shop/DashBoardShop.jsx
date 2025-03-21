@@ -19,7 +19,7 @@ const DashBoardShop = () => {
         {/* Sidebar */}
         <SideBarShop />
         
-        <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }} className={styles.dashboard} >
+        <div style={{ marginLeft: "250px", padding: "50px", width: "100%" }} className={styles.dashboard} >
           <h1 className="text-center">Thống kê tổng quát</h1>
           <FollowerAnalytics />
           <SalesAnalytics />
