@@ -3,18 +3,18 @@ import { Table, Button, Form, InputGroup, Pagination } from "react-bootstrap";
 
 const ProductTable = () => {
   const [products, setProducts] = useState([
-    { id: 1, name: "Áo Thun Nam", price: "299.000đ",  img: require("../../../assets/image/item/item_5.jpg") },
-    { id: 2, name: "Quần Jeans", price: "499.000đ", img: require("../../../assets/image/item/item_1.jpg") },
-    { id: 3, name: "Áo Khoác", price: "799.000đ", img: require("../../../assets/image/item/item_2.jpg")  },
-    { id: 4, name: "Giày Sneaker", price: "999.000đ", img: require("../../../assets/image/item/item_3.jpg")  },
-    { id: 5, name: "Áo Thun Nam", price: "299.000đ",img: require("../../../assets/image/item/item_4.jpg")  },
-    { id: 6, name: "Quần Jeans", price: "499.000đ", img: require("../../../assets/image/item/item_1.jpg")  },
-    { id: 7, name: "Áo Khoác", price: "799.000đ",img: require("../../../assets/image/item/item_5.jpg")  },
-    { id: 8, name: "Giày Sneaker", price: "999.000đ", img: require("../../../assets/image/item/item_3.jpg") },
-    { id: 9, name: "Áo Thun Nam", price: "299.000đ", img: require("../../../assets/image/item/item_2.jpg")  },
-    { id: 10, name: "Quần Jeans", price: "499.000đ", img: require("../../../assets/image/item/item_4.jpg")  },
-    { id: 11, name: "Áo Khoác", price: "799.000đ",img: require("../../../assets/image/item/item_2.jpg")  },
-    { id: 12, name: "Giày Sneaker", price: "999.000đ", img: require("../../../assets/image/item/item_1.jpg")  },
+    { id: 1, name: "Áo Thun Nam",category : "Áo Nam" ,price: "299.000đ",  img: require("../../../assets/image/item/item_5.jpg") },
+    { id: 2, name: "Quần Jeans", category : "Áo Nữ", price: "499.000đ", img: require("../../../assets/image/item/item_1.jpg") },
+    { id: 3, name: "Áo Khoác",category : "Áo Đông",  price: "799.000đ", img: require("../../../assets/image/item/item_2.jpg")  },
+    { id: 4, name: "Giày Sneaker",category : "Phụ kiện",  price: "999.000đ", img: require("../../../assets/image/item/item_3.jpg")  },
+    { id: 5, name: "Áo Thun Nam",category : "Áo Hè",  price: "299.000đ",img: require("../../../assets/image/item/item_4.jpg")  },
+    { id: 6, name: "Quần Jeans", category : "Áo Trẻ Em", price: "499.000đ", img: require("../../../assets/image/item/item_1.jpg")  },
+    { id: 7, name: "Áo Khoác", category : "Áo Nam", price: "799.000đ",img: require("../../../assets/image/item/item_5.jpg")  },
+    { id: 8, name: "Giày Sneaker",category : "Áo Nữ",  price: "999.000đ", img: require("../../../assets/image/item/item_3.jpg") },
+    { id: 9, name: "Áo Thun Nam", category : "Áo Nam", price: "299.000đ", img: require("../../../assets/image/item/item_2.jpg")  },
+    { id: 10, name: "Quần Jeans", category : "Áo Nam", price: "499.000đ", img: require("../../../assets/image/item/item_4.jpg")  },
+    { id: 11, name: "Áo Khoác", category : "Áo Nam", price: "799.000đ",img: require("../../../assets/image/item/item_2.jpg")  },
+    { id: 12, name: "Giày Sneaker", category : "Áo Nam", price: "999.000đ", img: require("../../../assets/image/item/item_1.jpg")  },
   ]);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,7 +41,8 @@ const ProductTable = () => {
   const filteredProducts = products.filter(
     (product) =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.price.toLowerCase().includes(searchTerm.toLowerCase())
+      product.price.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -66,6 +67,7 @@ const ProductTable = () => {
             <th>ID</th>
             <th>Hình ảnh</th>
             <th>Tên sản phẩm</th>
+            <th>Danh Mục</th>
             <th>Giá bán</th>
             <th>Hành động</th>
           </tr>
@@ -82,6 +84,13 @@ const ProductTable = () => {
                   <Form.Control value={editProduct.name} onChange={(e) => setEditProduct({ ...editProduct, name: e.target.value })} />
                 ) : (
                   product.name
+                )}
+              </td>
+              <td className="text-center">
+                {editProduct?.id === product.id ? (
+                  <Form.Control value={editProduct.category} onChange={(e) => setEditProduct({ ...editProduct, category: e.target.value })} />
+                ) : (
+                  product.category
                 )}
               </td>
               <td>

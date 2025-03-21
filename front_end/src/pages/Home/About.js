@@ -7,7 +7,7 @@ const About = () => {
       <div className="row">
         <div className="col-md-6 d-flex align-items-center">
           <img 
-            src={require("../assets/about/about.jpg")}
+            src={require("../../assets/about/about.jpg")}
             alt="About Us" 
             className="img-fluid rounded shadow-lg" 
           />

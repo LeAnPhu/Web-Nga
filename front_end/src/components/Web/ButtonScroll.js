@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { FaArrowUp } from "react-icons/fa";
-import styles from "../assets/style/components/button.module.css";
+import styles from "../../assets/style/components/button.module.css";
 const ButtonScroll = () => {
     const [showButton, setShowButton] = useState(false);
 

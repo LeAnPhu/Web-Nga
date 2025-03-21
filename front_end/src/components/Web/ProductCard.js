@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { BiHeart, BiSolidHeart } from "react-icons/bi";
 import { motion } from "framer-motion";
-import styles from "../assets/style/components/product_card.module.css";
-import {WishToast } from "../components";
+import styles from "../../assets/style/components/product_card.module.css";
+import {WishToast } from "../../components";
 const ProductCard = ({ product, onShow }) => {
   const [isFavorited, setIsFavorited] = useState(false);
   const [showToast, setShowToast] = useState(false);

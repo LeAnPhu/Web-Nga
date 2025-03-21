@@ -1,0 +1,118 @@
+/* ========== QUẢN LÝ MÃ GIẢM GIÁ ========== */
+
+/* Thiết lập tổng quan */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  /* Card chứa danh sách mã giảm giá */
+  .cardContainer {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  /* Bộ lọc */
+  .filter {
+    width: 200px;
+  }
+  
+  /* Bảng danh sách mã giảm giá */
+  .tableCoupon {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+  }
+  
+  .tableCoupon th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .tableCoupon td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Hành động (chỉnh sửa, xóa) */
+  .btnAction {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .btnAction button {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  /* Modal Chi Tiết Mã Giảm Giá */
+  .modalCoupon .modal-header {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .modalCoupon .modal-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Form Thêm/Sửa Mã Giảm Giá */
+  .formGroup {
+    margin-bottom: 15px;
+  }
+  
+  .formGroup label {
+    font-weight: bold;
+  }
+  
+  .formGroup input,
+  .formGroup select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Nút Thêm Mã Giảm Giá */
+  .btnAddCoupon {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .btnAddCoupon:hover {
+    background-color: #218838;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .btnAction {
+      flex-direction: column;
+    }
+  }
+  

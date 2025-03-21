@@ -1,6 +1,13 @@
 import React from "react";
-import { SideBarShop, NavbarShop, SalesAnalytics, ProductAnalyticsShop,FollowerAnalytics} from "../../components"; 
+import { 
+  FollowerAnalytics, 
+  SalesAnalytics, 
+  ProductAnalyticsShop,
+  NavbarShop,
+  SideBarShop
+} from "../../components";
 
+import styles from "../../assets/style/pages/Shop/dashboard.module.css";
 const DashBoardShop = () => {
   console.log("DashBoardShop rendered!");
   return (
@@ -12,7 +19,7 @@ const DashBoardShop = () => {
         {/* Sidebar */}
         <SideBarShop />
         
-        <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }} className="mt-5" >
+        <div style={{ marginLeft: "250px", padding: "20px", width: "100%" }} className={styles.dashboard} >
           <h1 className="text-center">Thống kê tổng quát</h1>
           <FollowerAnalytics />
           <SalesAnalytics />

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, Image , Button, Row ,Column} from "react-bootstrap";
-import styles from "../assets/style/components/header/header.module.css";
+import styles from "../../assets/style/components/header/header.module.css";
 import { BsCart3 } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Location, Search } from "../components";
+import { Location, Search } from "..";
 const Header = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   useEffect(() => {
@@ -46,7 +46,7 @@ const Header = () => {
 
           {/* Avatar */}
             <div className = {styles.avatar}>
-            <Image src ={require("../assets/image/avatar.jpg")}></Image>
+            <Image src ={require("../../assets/image/avatar.jpg")}></Image>
           </div>
         </Container>
       </Navbar>
