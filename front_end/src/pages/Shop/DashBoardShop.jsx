@@ -2,7 +2,7 @@ import React from "react";
 import { 
   FollowerAnalytics, 
   SalesAnalytics, 
-  ProductAnalyticsShop,
+  ProductAnalytics,
   NavbarShop,
   SideBarShop
 } from "../../components";
@@ -23,7 +23,7 @@ const DashBoardShop = () => {
           <h1 className="text-center">Thống kê tổng quát</h1>
           <FollowerAnalytics />
           <SalesAnalytics />
-          <ProductAnalyticsShop />
+          <ProductAnalytics />
         </div>
       </div>
     </div>

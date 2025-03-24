@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
-import { ProductList, ProductFilter, ProductAction, ProductForm, NavbarShop, SideBarShop } from "../../components";
+import {NavbarShop, SideBarShop } from "../../components";
+import { ProductList, ProductFilter, ProductAction, ProductForm } from "../../components";
+
 
 
 import item1 from "../../assets/image/item/item_1.jpg";
@@ -30,7 +32,7 @@ const initialProducts = [
   { id: 18, name: "Quần jeans",category : "Áo Nam" , price: 350000,  img: item4, status: "Hết hàng", rating: 3.8 },
 ];
 
-const ManageProduct = () => {
+const ManageProductShop = () => {
   const [products, setProducts] = useState(initialProducts);
   const [filterStatus, setFilterStatus] = useState("");
   const [showForm, setShowForm] = useState(false);
@@ -91,4 +93,4 @@ const ManageProduct = () => {
   );
 };
 
-export default ManageProduct;
+export default ManageProductShop;

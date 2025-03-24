@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, Image , Button, Row ,Column} from "react-bootst
 import styles from "../../assets/style/components/header/header.module.css";
 import { BsCart3 } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Location, Search } from "..";
+import { Location} from "..";
 const Header = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   useEffect(() => {
@@ -54,7 +54,6 @@ const Header = () => {
         <Location /> <span className="ms-2">{currentTime.toLocaleString()}</span>
       </div>
 
-      <Search/>
 
       <Container className="mt-5">
         <Row>

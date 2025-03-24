@@ -18,7 +18,7 @@ const productCount = 10; // Tổng số sản phẩm
 const visibleProducts = 10; // Số lượng hiển thị ban đầu
 const dataProducts = generateProductData(productCount, 0, 20); // Có thể có sản phẩm hết hàng
 
-const ProductAnalyticsShop = () => {
+const ProductAnalytics = () => {
   // Tìm sản phẩm bán chạy nhất
   const bestSellingProduct = dataProducts.reduce((max, product) => 
     product.số_lượng > max.số_lượng ? product : max, dataProducts[0]);
@@ -94,4 +94,4 @@ const ProductAnalyticsShop = () => {
   );
 };
 
-export default ProductAnalyticsShop;
+export default ProductAnalytics;

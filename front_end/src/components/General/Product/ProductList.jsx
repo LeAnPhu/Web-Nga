@@ -1,6 +1,6 @@
 import React from "react";
 import { Table} from "react-bootstrap";
-import ProductItem from "./ProductItem";
+import ProductItem from "../../General/Product/ProductItem";
 
 const ProductList = ({ products, onEdit, onDelete }) => {
   return (
