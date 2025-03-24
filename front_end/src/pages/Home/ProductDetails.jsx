@@ -113,7 +113,7 @@ const ProductDetails = () => {
             <span className="ms-2 text-muted">({totalReviews} đánh giá)</span>
           </div>
 
-          <Button variant="success" size="lg">🛒 Thêm vào Giỏ hàng</Button>
+          <Button variant="success" size="lg" onClick = {() => navigate("/cart")}>🛒 Thêm vào Giỏ hàng</Button>
         </Col>
       </Row>
 
