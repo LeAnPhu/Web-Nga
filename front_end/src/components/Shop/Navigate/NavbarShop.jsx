@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle, FaSignOutAlt, FaCog } from "react-icons/fa";
-import styles from "../../../assets/style/components/AdminPage/navbar.module.css";
-
+import styles from "../../../assets/style/components/ShopPage/navbarshop.module.css";
 const NavbarShop = () => {
   return (
     <nav className={styles.navbar}>
