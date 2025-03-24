@@ -20,7 +20,7 @@ const NavbarAdmin = () => {
         <Link to="/admin/settings" className={styles.icon}>
           <FaCog size={24} />
         </Link>
-        <Link to="/logout" className={styles.icon}>
+        <Link to="/" className={styles.icon}>
           <FaSignOutAlt size={24} />
         </Link>
       </div>

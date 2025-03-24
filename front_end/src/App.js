@@ -27,7 +27,7 @@ function App() {
 // Ẩn Header ở một số trang
 function HeaderWrapper() {
   const location = useLocation();
-  const hideHeaderRoutes = ["/store", "/cart", "/admin" ,"/shop"]; 
+  const hideHeaderRoutes = ["/store", "/cart", "/admin" ,"/shop" ,"/product"]; 
   return hideHeaderRoutes.some((route) => location.pathname.startsWith(route)) ? null : <Header />;
 }
 

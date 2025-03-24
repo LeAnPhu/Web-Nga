@@ -7,6 +7,7 @@ import { CgMathMinus } from "react-icons/cg";
 import {  useNavigate} from "react-router-dom";
 import { AiTwotoneDelete } from "react-icons/ai";
 import styles from "../../assets/style/pages/cart_page.css";
+import { ProductCard } from "../../components";
 const products = [
     { id: 1, name: "Áo Thun Nam", price: "299.000Đ",  img: require("../../assets/image/item/item_5.jpg"), quanlity : 2, size: 36, color : "red"},
     { id: 2, name: "Quần Jeans", price: "499.000Đ", img: require("../../assets/image/item/item_1.jpg") , quanlity : 1, size: 38, color : "white"},
@@ -36,7 +37,7 @@ const newProducts = [
 ];
 const CartPage = () => {  
      const navigate = useNavigate(); 
-    
+
       const handleBackToHome = () => {
         navigate("/"); 
       };
@@ -48,15 +49,18 @@ const CartPage = () => {
       const scrollRef = useRef(null);
       const scrollLeft = () => {
             if (scrollRef.current) {
-                scrollRef.current.scrollLeft -= 400;
+                scrollRef.current.scrollBy({ left: -400, behavior: "smooth" });
             }
         };
       const scrollRight = () => {
             if (scrollRef.current) {
-                scrollRef.current.scrollLeft += 400;
+                scrollRef.current.scrollBy({ left: 400, behavior: "smooth" });
             }
         };
-
+    
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
         <div className="cart_container">
             <Row className="my-5 header_row justify-content-around">
@@ -71,7 +75,7 @@ const CartPage = () => {
                 </Col>
             </Row>
          
-            <Row className="d-flex justify-content-between">
+            <Row className="d-flex justify-content-center">
                
                 <Col className="md-8 table_product">
                     <div className="title_cart">
@@ -157,27 +161,32 @@ const CartPage = () => {
                    <img src={require("../../assets/image/banner/banner_6.jpg")}/>
             </Row>
 
-             <Row className="mt-5 newArrival position-relative">
+            <Row className="mt-5 newArrival position-relative">
             <h1>Sản phẩm mới</h1>
-            <Button className="scroll-btn left" variant=""onClick={scrollLeft}>
-                <GoArrowLeft />
-            </Button>
-            <div ref={scrollRef} className="d-flex overflow-auto newArrival-container">
-                {newProducts.map((product) => (
-                    <Col key={product.id} xs={12} md={6} lg={4} className="mb-4 flex-shrink-0 newArrivalItem " style={{ minWidth: "300px" }}>
-                        <div>
-                            <img src={product.img} alt={product.name} className="img-fluid mb-3 fixed_img" />
-                            <h3 className="text-center">{product.name}</h3>
-                            <p className="text-danger fw-bold text-center">{product.price}</p>
-                            <Button className="w-100" variant="">Xem Chi Tiết</Button>
+                    <div className="product-scroll-container">
+                        {/* Nút cuộn trái */}
+                        <Button className="scroll-btn left" variant="" onClick={scrollLeft}>
+                            <GoArrowLeft />
+                        </Button>
+
+                        {/* Danh sách sản phẩm */}
+                        <div className="product-list" ref={scrollRef}>
+                            <Row className="flex-nowrap">
+                                {newProducts.map((product) => (
+                                    <Col key={product.id} xs={12} md={3} className="mb-4 d-flex flex-column">
+                                        <ProductCard product={product} />
+                                    </Col>
+                                ))}
+                            </Row>
                         </div>
-                    </Col>
-                ))}
-            </div>
-            <Button className="scroll-btn right" variant="" onClick={scrollRight}>
-                <GoArrowRight />
-            </Button>
-        </Row>
+
+                        {/* Nút cuộn phải */}
+                        <Button className="scroll-btn right" variant="" onClick={scrollRight}>
+                            <GoArrowRight />
+                        </Button>
+                        </div>
+            </Row>
+
         </div>
     );
 };
