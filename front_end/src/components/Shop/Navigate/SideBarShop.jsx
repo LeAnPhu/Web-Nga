@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Button } from "react-bootstrap";
-import styles from "../../../assets/style/components/AdminPage/sidebar.module.css"; 
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { FaUserCog, FaStore } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
@@ -9,6 +8,8 @@ import { RiCoupon3Fill } from "react-icons/ri";
 import { IoBarChartSharp } from "react-icons/io5";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import styles from "../../../assets/style/components/ShopPage/sidebarshop.module.css";
+
 const SideBarShop = () => {
   const [isClosed, setIsClosed] = useState(false); 
 

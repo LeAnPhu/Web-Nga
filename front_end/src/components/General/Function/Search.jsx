@@ -39,10 +39,16 @@ const Search = ({ onSearch }) => {
             <Row className="mb-2">
                 <Col>
                     <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
-                        <option value="">Chọn danh mục</option>
+                        <option value="">Tất cả danh mục</option>
                         <option value="Áo Nam">Áo Nam</option>
-                        <option value="Quần Nam">Quần Nam</option>
+                        <option value="Áo Nữ">Áo Nữ</option>
+                        <option value="Áo Trẻ Em">Áo Trẻ Em</option>
+                        <option value="Áo Hè">Áo Hè</option>
+                        <option value="Áo Đông">Áo Đông</option>
+                        <option value="Quần">Quần</option>
+                        <option value="Váy">Váy</option>
                         <option value="Giày Dép">Giày Dép</option>
+                        <option value="Phụ Kiện">Phụ Kiện</option>
                     </Form.Select>
                 </Col>
 

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { NavbarShop, SideBarShop } from "../../components/index";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import { OrderList, OrderFilter, OrderDetail} from "../../components";
+import { OrderList, OrderFilter, OrderDetail,PaginationComponent } from "../../components";
 import styles from "../../assets/style/pages/Shop/order.module.css";
+
 const initialOrders = [
   { id: 1, customer: "John Doe", total: 100000, status: "Đang xử lý" },
   { id: 2, customer: "Jane Smith", total: 250000, status: "Hoàn thành" },
@@ -32,6 +33,14 @@ const ManageOrderShop = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [filterStatus, setFilterStatus] = useState("");
 
+  // Phân trang
+  const [currentPage, setCurrentPage] = useState(1);
+  const ordersPerPage = 8;
+  const totalPages = Math.ceil(orders.length / ordersPerPage);
+
+  const indexOfLastOrder = currentPage * ordersPerPage;
+  const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
+  const currentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
 
   // Xem chi tiết đơn hàng
   const handleViewOrder = (order) => {
@@ -70,37 +79,38 @@ const ManageOrderShop = () => {
     );
   };
 
-  // Lọc đơn hàng theo trạng thái
-  const filteredOrders = filterStatus
-    ? orders.filter((order) => order.status === filterStatus)
-    : orders;
-
   return (
     <div>
       <NavbarShop />
-        <div style={{ display: "flex" }} >
-            <SideBarShop />
-            <div style={{ marginLeft: "250px", marginTop:'70px',padding: "50px", width: "100%" }}>
-              <h1 className="text-center">Đơn hàng</h1>
-              <Container >
-                <Card className="p-3">
-                  <Row className="mb-3">
-                    <Col>
-                      <OrderFilter filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
-                    </Col>
-                  </Row>
-                  <OrderList
-                    orders={filteredOrders}
-                    onView={handleViewOrder}
-                    onDelete={handleDeleteOrder}
-                    onCancel={handleCancelOrder}
-                    onShip={handleShipOrder}
-                    onComplete={handleCompleteOrder}
-                  />
-                </Card>
-              </Container>
-          </div>
+      <div style={{ display: "flex" }}>
+        <SideBarShop />
+        <div style={{ marginLeft: "250px", marginTop: "70px", padding: "50px", width: "100%" }}>
+          <h1 className="text-center">Đơn hàng</h1>
+          <Container>
+            <Card className="p-3">
+              <Row className="mb-3">
+                <Col>
+                  <OrderFilter filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
+                </Col>
+              </Row>
+                {/* Phân trang */}
+                <PaginationComponent
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+              <OrderList
+                orders={currentOrders} 
+                onView={handleViewOrder}
+                onDelete={handleDeleteOrder}
+                onCancel={handleCancelOrder}
+                onShip={handleShipOrder}
+                onComplete={handleCompleteOrder}
+              />
+            </Card>
+          </Container>
         </div>
+      </div>
       <OrderDetail show={!!selectedOrder} order={selectedOrder} onClose={() => setSelectedOrder(null)} />
     </div>
   );
