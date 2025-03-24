@@ -19,7 +19,7 @@ const CouponList = ({ coupons, onEdit, onDelete }) => {
             <td>{coupon.id}</td>
             <td>{coupon.code}</td>
             <td>{coupon.discount}%</td>
-            <td>{coupon.status}</td>
+            <td className={`${coupon.status === "Hoạt động" ? "text-success" : "text-danger"}`}>{coupon.status}</td>
             <td>
               <Button variant="info" size="sm" onClick={() => onEdit(coupon)}>
                 Chỉnh sửa

@@ -24,7 +24,7 @@ const Header = () => {
 
         <Container className="d-flex justify-content-between align-items-center">
           {/* Logo */}
-          <Navbar.Brand as={Link} to="/home" className={styles.logo}>
+          <Navbar.Brand as={Link} to="/" className={styles.logo}>
             N.G.A 
           </Navbar.Brand>
 

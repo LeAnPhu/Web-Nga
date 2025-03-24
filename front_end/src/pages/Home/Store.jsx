@@ -91,7 +91,7 @@ const Store = () => {
     navigate("/cart"); 
   };
   return (
-    <Container>
+    <div>
       <Row className="my-5 header_row justify-content-around">
         <Col className = "d-flex justify-content-start align-items-center">
           <button className="btn_back" onClick={handleBackToHome}> <GoArrowLeft /></button> 
@@ -135,7 +135,7 @@ const Store = () => {
           </Col>
         ))}
       </Row>
-    </Container>
+    </div>
   );
 };
 

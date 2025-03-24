@@ -18,7 +18,9 @@ const ProductItem = ({ product, onEdit, onDelete }) => {
       <td className="text-center align-middle">{product.name}</td>
       <td className="text-center align-middle">{product.category}</td>
       <td className="text-center align-middle">{product.price.toLocaleString()} đ</td>
-      <td className="text-center align-middle">{product.status}</td>
+      <td className={`text-center align-middle ${product.status === "Còn hàng" ? "text-success" : "text-danger"}`}>
+        {product.status}
+      </td>
       <td className="text-center align-middle ">⭐ {product.rating} / 5</td>
       <td className="text-center align-middle">
         <Button variant="warning" size="sm" onClick={() => onEdit(product)}>Sửa</Button>{" "}
