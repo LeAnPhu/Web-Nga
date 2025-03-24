@@ -91,7 +91,7 @@ const Store = () => {
     navigate("/cart"); 
   };
   return (
-    <div>
+    <div className="container_store">
       <Row className="my-5 header_row justify-content-around">
         <Col className = "d-flex justify-content-start align-items-center">
           <button className="btn_back" onClick={handleBackToHome}> <GoArrowLeft /></button> 
@@ -128,7 +128,7 @@ const Store = () => {
                   </Col>
                 ))}
               </Row>
-              <Button variant=""  className="mt-3 btn_visit" >
+              <Button variant=""  className="mt-3 btn_visit"  onClick={() => navigate(`/store/${store.id}`)}>
                 Tham Quan Cửa Hàng ⭢
               </Button>
             </div>

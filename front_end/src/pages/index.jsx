@@ -8,6 +8,7 @@ export {default as  Category} from './Home/Category';
 export {default as OrderHistoryPage} from './Home/OrderHistoryPage';
 export {default as LoginPage} from './Home/LoginPage';
 export {default as ProductDetails} from './Home/ProductDetails';
+export {default as StoreDetail} from './Home/StoreDetail';
 
 // Trang Admin
 export { default as DashBoardAdmin } from './AdminControll/DashBoardAdmin';
