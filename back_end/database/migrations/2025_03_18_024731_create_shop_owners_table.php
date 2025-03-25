@@ -11,13 +11,13 @@ return new class extends Migration
         Schema::create('shop_owners', function (Blueprint $table) {
             $table->id();
             $table->enum('role', ['user', 'shop_owner', 'admin'])->default('shop_owner');
-            $table->string('phone');
+            $table->string('phone') -> default('null');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
             $table->string('image')->nullable();
             $table->boolean('isActive')->default(true);
-            $table->integer('otp');
+            $table->integer('otp') -> default(1);
             $table-> boolean('confirm')->default(0);
             $table-> timestamp('otp_expired');
             $table->timestamp('email_verified_at')->nullable();
