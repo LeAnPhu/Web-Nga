@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Card, Carousel, Image, Tab, Tabs, Table } from "react-bootstrap";
-import styles from "../../assets/style/pages/home_page.module.css";
 
 // Import component
 import { ProductCard, Category } from "../../components"; 

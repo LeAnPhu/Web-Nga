@@ -5,7 +5,6 @@ import styles from "../../../assets/style/components/AdminPage/sidebar.module.cs
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { FaUserCog, FaStore } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
-import { RiCoupon3Fill } from "react-icons/ri";
 import { IoBarChartSharp } from "react-icons/io5";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";

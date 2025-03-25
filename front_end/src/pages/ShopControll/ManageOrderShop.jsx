@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavbarShop, SideBarShop } from "../../components/index";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { OrderList, OrderFilter, OrderDetail,PaginationComponent } from "../../components";
-import styles from "../../assets/style/pages/Shop/order.module.css";
+
 
 const initialOrders = [
   { id: 1, customer: "John Doe", total: 100000, status: "Đang xử lý" },

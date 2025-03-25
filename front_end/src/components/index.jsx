@@ -10,7 +10,7 @@ export { default as Search } from './General/Function/Search';
 export { default as WishToast} from './General/UI/WishToast';
 export { default as ProductAnalytics } from './General/Product/ProductAnalytics';
 export { default as PaginationComponent } from './General/UI/PaginationComponent';
-
+export { default as MapComponent } from './General/Layout/MapComponent';
 
 {/* Component Trang chinh */}
 export { default as Header } from './Web/Header';
