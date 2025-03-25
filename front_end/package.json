@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
+    "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "framer-motion": "^12.5.0",
@@ -24,6 +26,7 @@
     "react-zoom-pan-pinch": "^3.7.0",
     "recharts": "^2.15.1",
     "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -49,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/redux-thunk": "^2.1.0"
   }
 }
