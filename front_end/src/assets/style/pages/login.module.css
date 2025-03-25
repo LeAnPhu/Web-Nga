@@ -1,0 +1,110 @@
+/* Nền tổng thể */
+.login_container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+  }
+  
+  /* Bố cục login */
+  .login_wrapper {
+    width: 1500px;
+    height: 800px;
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Phần welcome */
+  .welcome_section {
+    background: linear-gradient(135deg, #2563eb, #9333ea);
+    color: white;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+  }
+  
+  .welcome_section h2 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .welcome_section p {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  /* Phần form đăng nhập */
+  .login_section {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .greeting {
+    color: #9333ea;
+    font-weight: bold;
+  }
+  
+  .login_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Ô input */
+  .input_field {
+    border: none;
+    border-bottom: 2px solid #9333ea;
+    border-radius: 0;
+    background: transparent;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Nút đăng nhập */
+  .login_btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #2563eb, #9333ea);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .login_btn:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Link "Forgot Password" */
+  .forgot_password {
+    color: #9333ea;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .forgot_password:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+  }
+  
+  /* Link "Create Account" */
+  .create_account {
+    color: #2563eb;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  .create_account:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+  }
+  

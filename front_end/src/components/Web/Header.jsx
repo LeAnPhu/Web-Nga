@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar, Nav, Container, Image , Button, Row ,Column} from "react-bootstrap";
+import { Navbar, Nav, Container, Image , Button, Row } from "react-bootstrap";
 import styles from "../../assets/style/components/header/header.module.css";
 import { BsCart3 } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,7 +18,7 @@ const Header = () => {
       navigate("/cart"); 
     };
   return (
-    <header className={`${styles.header} `}style={{ backgroundImage: 'url("/images/background.jpg")' }}>
+    <header className={`${styles.header} `}style={{ backgroundImage: 'url("/images/background_header.jpg")' }}>
 
       <Navbar expand="lg" className="container">
 

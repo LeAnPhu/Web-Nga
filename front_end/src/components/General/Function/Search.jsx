@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { InputGroup, Form, Button, Row, Col } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import styles from "../../../assets/style/components/search.module.css";

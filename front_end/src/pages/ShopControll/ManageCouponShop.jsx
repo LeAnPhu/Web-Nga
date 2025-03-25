@@ -27,7 +27,6 @@ const initialCoupons = [
 const ManageCoupon = () => {
   const [coupons, setCoupons] = useState(initialCoupons);
   const [filterStatus, setFilterStatus] = useState("");
-  const [selectedCoupon, setSelectedCoupon] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [editingCoupon, setEditingCoupon] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
