@@ -3,14 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Testing\Fluent\Concerns\Has;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Admin extends Authenticatable implements JWTSubject
 {
-    use HasFactory, HasApiTokens;
+    use HasFactory;
 
     protected $table = 'admins';   
     protected $primaryKey = 'id';  
@@ -36,6 +34,7 @@ class Admin extends Authenticatable implements JWTSubject
     {
         return [
             'role' => $this->role, 
+            'email' => $this->email,
         ];
     }
 }
