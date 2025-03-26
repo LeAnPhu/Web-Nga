@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ApiUser;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +15,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController 
 {
+    const setTimeExpiry = 2;
     public function register(Request $request)
     {
         $val = Validator::make($request -> all(),[
@@ -29,6 +31,10 @@ class AuthController
 
         DB::beginTransaction();
 
+        //OTP
+        $otp = (string) rand(100000,999999);
+        $otp_expired =  Carbon::now() -> addMinutes(static::setTimeExpiry);
+
         try
         {
             $user = User::create([
@@ -36,6 +42,8 @@ class AuthController
                 'email' => $request -> email,
                 'password' => Hash::make($request-> password),
                 'role' => 'user',
+                'otp' => $otp,
+                'otp_expired' => $otp_expired,
             ]);
 
             DB::commit();
@@ -48,6 +56,8 @@ class AuthController
                 'message' => 'Đăng ký tài khoản thành công',
                 'user' => $user,
                 'token' => $token,
+                'otp' => $otp,
+                'otp_expired' => $otp_expired,
             ]);
         }
         catch(\Exception $e)
@@ -57,6 +67,82 @@ class AuthController
             return response() -> json(['message' => 'Lỗi khi đăng ký tài khoản ']);
         }
     }
+
+    // Tạo lại OTP khi hết time
+    public function re_register(Request $request)
+        {
+        
+            $val = Validator::make($request->all(), [
+                'email' => 'required|string|email|max:255',  
+            ]);
+
+            if ($val->fails()) {
+                return response()->json($val->errors()->toJson(), 400);
+            }
+
+        
+            $user = User::where('email', $request->email)->first();
+
+            if (!$user) {
+                return response()->json([  
+                    'message' => 'Không tìm thấy người dùng với email này.',
+                ], 404);  
+            }
+
+            if ($user->confirm == true) {
+                return response()->json([ 
+                    'message' => 'Email này đã được xác thực. Bạn không thể gửi lại OTP.',
+                ], 400);
+            }
+
+            
+            $user->otp = (string) rand(100000, 999999); 
+            $user->otp_expired= Carbon::now()->addMinutes(static::setTimeExpiry);  
+            $user->save();
+
+            
+            if (!$user->otp || !$user->otp_expired) {
+                return response()->json([  
+                    'message' => 'Không thể tạo mã xác thực hoặc thời gian hết hạn.',
+                ], 500);  
+            }
+        }
+
+    // Xác thực
+    public function verifyOTP(Request $request)
+    {
+    
+        $request->validate([
+            'email' => 'required|email',
+            'otp' => 'required|digits:6', 
+        ]);
+
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'Tài khoản không tồn tại'], 404);
+        }
+
+
+        if (Carbon::now()->gt($user->otp_expired)) {
+            return response()->json(['message' => 'Hết hạn xác thực'], 400);
+        }
+
+    
+        if ((string)$user->otp !== (string)$request->otp) {
+            return response()->json(['message' => 'Mã xác thực không chính xác'], 400);
+        }
+
+        $user->otp_expired = null;
+        $user->confirm = true;
+        $user->email_verified_at = Carbon::now();
+        $user->save();
+
+        return response()->json(['message' => 'Xác thực tài khoản thành công']);
+    }
+
+
     /**
      * Đăng nhập user
      */
@@ -69,6 +155,18 @@ class AuthController
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $user = User::where('email', $request -> email) ->first();
+
+        if(!$user)
+        {
+            return response()-> json(['message' => 'Tài khoản không tồn tại']);
+        }
+
+        if($user -> confirm == false)
+        {
+            return response() -> json(['message' => 'Tài khoản chưa xác thực']);
         }
 
         $credentials = $request->only('email', 'password');

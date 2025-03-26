@@ -1,5 +1,5 @@
 /* ----- NỀN TỔNG THỂ ----- */
-.login_container {
+.register_container {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -7,22 +7,27 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding: 20px;
 }
 
-/* ----- KHUNG CHỨA LOGIN ----- */
-.login_wrapper {
-  width: 950px;
+/* ----- FORM ĐĂNG KÝ (Wrapper tổng thể) ----- */
+.register_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  width: 100%;
+  padding: 30px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(18px);
   border-radius: 12px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  display: flex;
-  flex-wrap: wrap;
   transition: all 0.3s ease-in-out;
   animation: fadeIn 0.6s ease-in-out;
 }
 
+/* ----- HIỆU ỨNG XUẤT HIỆN ----- */
 @keyframes fadeIn {
   from {
       opacity: 0;
@@ -34,46 +39,37 @@
   }
 }
 
-/* ----- PHẦN GIỚI THIỆU ----- */
+/* ----- CỘT CHỨA ẢNH MINH HỌA ----- */
 .welcome_section {
+  flex: 1;
   text-align: center;
-  color: white;
   padding: 20px;
 }
 
 .welcome_section h2 {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: bold;
+  color: white;
 }
 
 .welcome_section p {
   font-size: 16px;
-  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.welcome_section img {
-  width: 100%;
-  max-width: 250px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-}
 
-/* ----- FORM ĐĂNG NHẬP ----- */
-h4{
-  color: #f1fd42;
-}
-.greeting{
-  color: #f1fd42;
-}
-.login_section {
+/* ----- CỘT FORM ĐĂNG KÝ ----- */
+.register_section {
+  flex: 1;
   padding: 20px;
 }
 
-.login_title {
-  font-size: 22px;
+/* ----- TIÊU ĐỀ ----- */
+h4 {
+  font-size: 26px;
   font-weight: bold;
   color: white;
-  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* ----- INPUT ----- */
@@ -112,20 +108,9 @@ h4{
   font-size: 18px;
   color: rgba(255, 255, 255, 0.8);
 }
-/* ----- GHI NHỚ MẬT KHẨU & QUÊN MẬT KHẨU ----- */
-.forgot_password {
-  color: #0018f0;
-  font-weight: bold;
-  transition: color 0.3s;
-}
 
-.forgot_password:hover {
-  color: #ffcc00;
-  text-decoration: underline;
-}
-
-/* ----- BUTTON ĐĂNG NHẬP ----- */
-.login_btn {
+/* ----- BUTTON ĐĂNG KÝ ----- */
+.register_btn {
   font-size: 18px;
   font-weight: bold;
   padding: 12px;
@@ -134,23 +119,27 @@ h4{
   border-radius: 8px;
   border: none;
   transition: all 0.3s ease-in-out;
+  width: 100%;
 }
 
-.login_btn:hover {
+.register_btn:hover {
   transform: scale(1.05);
   background: linear-gradient(135deg, #9333ea, #2563eb);
   box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.3);
 }
 
-/* ----- TẠO TÀI KHOẢN MỚI ----- */
-.create_account {
+/* ----- LINK CHUYỂN ĐĂNG NHẬP ----- */
+.login_link {
+  display: block;
+  text-align: center;
+  font-size: 14px;
   color: #0018f0;
   font-weight: bold;
-  transition: color 0.3s;
+  margin-top: 10px;
+  text-decoration: none;
 }
 
-.create_account:hover {
-  color: #ffcc00;
+.login_link:hover {
   text-decoration: underline;
 }
 
@@ -160,4 +149,51 @@ h4{
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+/* LỰA CHỌN TÀI KHOẢN */
+.accountSelectContainer {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.accountIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.formSelect {
+  width: 100%;
+  padding: 12px 40px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.3);
+  color: grey;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  appearance: none;
+}
+
+.formSelect::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.formSelect:focus {
+  border-color: #facc15;
+  background: rgba(255, 255, 255, 0.4);
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(250, 204, 21, 0.6);
+}
+
+.formSelect option {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.formSelect option:hover {
+  background-color: #e6f32b;
+  color: grey;
 }

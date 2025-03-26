@@ -21,6 +21,8 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('shop_owner')->group(function () {
     Route::post('/register', [AuthShop::class, 'register']);
+    Route::post('/re-register', [AuthShop::class, 're-register']);
+    Route::post('/verify', [AuthShop::class], 'verifyOTP');
     Route::post('/login', [AuthShop::class, 'login']);
 
     Route::middleware(['jwt.auth', 'role:shop_owner'])->group(function () {
@@ -36,6 +38,8 @@ Route::prefix('shop_owner')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::post('/register', [AuthUser::class, 'register']);
+    Route::post('/reOTP', [AuthUser::class, 're_register']);
+    Route::post('/verify', [AuthUser::class, 'verifyOTP']);
     Route::post('/login', [AuthUser::class, 'login']);
 
     Route::middleware(['jwt.auth', 'role:user'])->group(function () {

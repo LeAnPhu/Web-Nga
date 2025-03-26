@@ -7,9 +7,9 @@ import { Header, Footer, ChatWidget, ButtonScroll } from "./components";
 import AppRouter from "./routes/AppRouter";
 import AdminRoutes from "./routes/Admin/AdminRoutes";
 import ShopRouter from "./routes/Shop/ShopRouter";
-import Login from "./pages/login";
+import { Login, Register, Forgot_Pass } from "./pages";
 import PrivateRouter from "./routes/PrivateRouter";
-
+import VerifyOTP from "./pages/verifyOTP";
 function App() {
   return (
     <Provider store={store}>
@@ -18,6 +18,9 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/verify" element={<VerifyOTP/>} />
+            <Route path="/forgot_password" element={<Forgot_Pass/>} />
             <Route path="/*" element={<AppRouter />} />
 
             {/* Đảm bảo PrivateRouter kiểm tra role chính xác */}
@@ -40,19 +43,20 @@ function App() {
 
 function HeaderWrapper() {
   const location = useLocation();
-  const hideHeaderRoutes = ["/login", "/store", "/cart", "/admin", "/shop", "/product"];
+  const hideHeaderRoutes = ["/login","/register","/forgot_password", "/store", "/cart", "/admin", "/shop", "/product","/verify"];
   return hideHeaderRoutes.some((route) => location.pathname.startsWith(route)) ? null : <Header />;
 }
 
 function FooterWrapper() {
   const location = useLocation();
-  const hideFooterRoutes = ["/login", "/admin", "/shop"];
+  const hideFooterRoutes = ["/login", "/admin", "/shop","/register","/forgot_password","/verify"];
   return hideFooterRoutes.some((route) => location.pathname.startsWith(route)) ? null : <Footer />;
 }
 
 function ChatWidgetHide() {
   const location = useLocation();
-  return location.pathname === "/login" ? null : <ChatWidget />;
+  const hideFooterRoutes = ["/login","/register","/forgot_password","/verify"];
+  return hideFooterRoutes.some((route) => location.pathname.startsWith(route)) ? null : <ChatWidget />;
 }
 
 export default App;
