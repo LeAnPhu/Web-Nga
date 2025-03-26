@@ -29,6 +29,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true, //Laravel CORS cho phép frontend (ReactJS) gửi cookies, JWT token hoặc headers khi gọi API.
 
 ];

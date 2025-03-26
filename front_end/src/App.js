@@ -19,11 +19,14 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/*" element={<AppRouter />} />
-            <Route element={<PrivateRouter allowedRoles={["admin"]} />}>
-              <Route path="/admin/*" element={<AdminRoutes />} />
+
+            {/* Đảm bảo PrivateRouter kiểm tra role chính xác */}
+            <Route path="/admin/*" element={<PrivateRouter allowedRoles={["admin"]} />}>
+              <Route path="*" element={<AdminRoutes />} />
             </Route>
-            <Route element={<PrivateRouter allowedRoles={["shop_owner"]} />}>
-              <Route path="/shop/*" element={<ShopRouter />} />
+
+            <Route path="/shop/*" element={<PrivateRouter allowedRoles={["shop_owner"]} />}>
+              <Route path="*" element={<ShopRouter />} />
             </Route>
           </Routes>
         </div>
@@ -43,7 +46,7 @@ function HeaderWrapper() {
 
 function FooterWrapper() {
   const location = useLocation();
-  const hideFooterRoutes = ["/login", "/admin/", "/shop/"];
+  const hideFooterRoutes = ["/login", "/admin", "/shop"];
   return hideFooterRoutes.some((route) => location.pathname.startsWith(route)) ? null : <Footer />;
 }
 

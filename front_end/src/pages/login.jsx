@@ -11,21 +11,34 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error } = useSelector((state) => state.auth);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await dispatch(login(email, password));
-    console.log("User:", result); 
-
-    if (result) {
+  
+    console.log("Kết quả trả về từ API:", result);
+  
+    // Kiểm tra nếu role tồn tại thay vì kiểm tra result.user
+    if (result && result.role) {
       const role = result.role;
-      if (role === "admin") navigate("/admin");
-      else if (role === "shop_owner") navigate("/shop");
-      else navigate("/");
+      console.log("Role sau đăng nhập:", role);
+  
+      if (role === "admin") {
+        console.log("Chuyển hướng đến /admin");
+        navigate("/admin");
+      } else if (role.trim().toLowerCase() === "shop_owner") {
+        console.log("Chuyển hướng đến /shop");
+        navigate("/shop");
+      } else {
+        console.log("Chuyển hướng đến /");
+        navigate("/");
+      }
     } else {
       console.log("Lỗi đăng nhập hoặc thiếu data");
     }
   };
+  
+
+  
   
   
 
@@ -55,9 +68,10 @@ const Login = () => {
                 <Form.Check type="checkbox" label="Nhớ mật khẩu" />
                 <a href="/forgot-password" className={styles.forgot_password}>Quên mật khẩu?</a>
               </div>
-              <Button type="submit" className={styles.login_btn} block>
+              <Button type="submit" className={`${styles.login_btn} w-100`}>
                 Đăng nhập
               </Button>
+
             </Form>
             <p className="text-center mt-3">
               <a href="/register" className={styles.create_account}>Tạo tài khoản mới</a>

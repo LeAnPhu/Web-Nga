@@ -74,22 +74,25 @@ class AuthController
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $credentials = $request->only('email', 'password');
-
-        if (!$token = Auth::guard('admin')->attempt($credentials)) {
-            Log::warning('Đăng nhập thất bại: ' . $request->email);
-            return response()->json(['message' => 'Đăng nhập thất bại'], 401);
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        
+        if (!Auth::guard('admin')->attempt($credentials)) {
+            return response()->json(['message' => 'Sai email hoặc mật khẩu'], 401);
         }
-
+        
         $admin = Auth::guard('admin')->user();
-
-        Log::info('Admin đăng nhập: ' . $request->email);
-
+        $token = JWTAuth::fromUser($admin);
+        
         return response()->json([
             'message' => 'Đăng nhập thành công',
             'admin'   => $admin,
-            'token'   => $token
+            'token'   => $token,
+            'role' => 'admin'
         ]);
+        
     }
 
     /**
