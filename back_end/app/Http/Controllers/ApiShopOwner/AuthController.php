@@ -85,7 +85,8 @@ class AuthController
         return response()->json([
             'message' => 'Đăng nhập thành công',
             'shop_owner'   => $shop_owner,
-            'token'   => $token
+            'token'   => $token,
+            'role' => 'shop_owner'
         ]);
     }
 

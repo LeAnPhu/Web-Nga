@@ -49,16 +49,16 @@ const HomePage = () => {
       {/* Slider Banner */}
       <Carousel className="mb-4">
         <Carousel.Item>
-          <Image className="d-block w-100" src={banner1} alt="Slide 1" fluid />
+          <Image className="d-block w-100" src={banner1} alt="Slide 1" fluid={true} />
         </Carousel.Item>
         <Carousel.Item>
-          <Image className="d-block w-100" src={banner2} alt="Slide 2" fluid />
+          <Image className="d-block w-100" src={banner2} alt="Slide 2" fluid={true} />
         </Carousel.Item>
         <Carousel.Item>
-          <Image className="d-block w-100" src={banner3} alt="Slide 3" fluid />
+          <Image className="d-block w-100" src={banner3} alt="Slide 3" fluid={true} />
         </Carousel.Item>
         <Carousel.Item>
-          <Image className="d-block w-100" src={banner4} alt="Slide 4" fluid />
+          <Image className="d-block w-100" src={banner4} alt="Slide 4" fluid={true} />
         </Carousel.Item>
       </Carousel>
 
