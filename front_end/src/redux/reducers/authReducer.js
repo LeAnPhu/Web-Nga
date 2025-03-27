@@ -7,7 +7,7 @@ const initialState = {
   token: null,
   isAuthenticated: false,
   error: null,
-  otpExpired: false, // Thêm trạng thái OTP hết hạn
+  otpExpired: false, 
 };
 
 const authReducer = (state = initialState, action) => {
