@@ -1,4 +1,5 @@
-import {LOGIN_SUCCESS,LOGIN_FAIL,REGISTER_SUCCESS,REGISTER_FAIL,RE_REGISTER_SUCCESS,RE_REGISTER_FAIL,} from "../types";
+import {LOGIN_SUCCESS,LOGIN_FAIL,REGISTER_SUCCESS,REGISTER_FAIL,
+  VERIFY_OTP_SUCCESS,VERIFY_OTP_FAIL,OTP_EXPIRED,RE_REGISTER_SUCCESS,RE_REGISTER_FAIL,} from "../types";
 
 
 const initialState = {
@@ -58,6 +59,27 @@ const authReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         otpExpired: action.payload.includes("OTP đã hết hạn"),
+      };
+
+      case VERIFY_OTP_SUCCESS:
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        isAuthenticated: true,
+        error: null,
+      };
+
+    case VERIFY_OTP_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
+    case OTP_EXPIRED:  
+      return {
+        ...state,
+        otpExpired: true,
       };
 
     case "LOGOUT":

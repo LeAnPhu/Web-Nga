@@ -7,10 +7,11 @@ import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import styles from "../assets/style/pages/register.module.css";
 
 const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState("user"); // Mặc định là user
+  const [role, setRole] = useState("user"); 
   const [errorMsg, setErrorMsg] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,20 +20,21 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Kiểm tra mật khẩu và xác nhận mật khẩu
     if (password !== confirmPassword) {
       setErrorMsg("Mật khẩu không khớp!");
       return;
     }
-    setErrorMsg(""); // Nếu mật khẩu khớp, xóa thông báo lỗi
+    setErrorMsg(""); 
 
-    // Gửi yêu cầu đăng ký tới Redux
-    const result = await dispatch(register(email, password, role));
+    const result = await dispatch(register(name, email, password, role));
     
-    // Nếu đăng ký thành công, chuyển hướng đến trang xác thực
     if (result?.success) {
-      navigate("/verify", { state: { email } }); // Truyền email qua state
+      navigate("/verify", { state: { email, role  } });
     }
+    else {
+      setErrorMsg(result.error);
+    }
+    
   };
 
   return (
@@ -55,6 +57,18 @@ const Register = () => {
 
             {/* Form đăng ký */}
             <Form onSubmit={handleSubmit}>
+
+              <Form.Group className={styles.input_group}>
+                  <FaUser className={styles.accountIcon} />
+                  <Form.Control
+                    type="name"
+                    placeholder="Tên của bạn"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+              </Form.Group>
+              
               <Form.Group className={styles.input_group}>
                 <FaEnvelope className={styles.icon} />
                 <Form.Control

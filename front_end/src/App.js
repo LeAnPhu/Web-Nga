@@ -1,9 +1,11 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
+import { useSelector } from "react-redux";
 import store from "./redux/store";
 import { Header, Footer, ChatWidget, ButtonScroll } from "./components";
+import { ToastContainer } from "react-toastify";
 import AppRouter from "./routes/AppRouter";
 import AdminRoutes from "./routes/Admin/AdminRoutes";
 import ShopRouter from "./routes/Shop/ShopRouter";
@@ -14,9 +16,11 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
+        <ToastContainer />
         <HeaderWrapper />
         <div className="App">
           <Routes>
+            <Route path="/" element={<ProtectedRoute />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register/>} />
             <Route path="/verify" element={<VerifyOTP/>} />
@@ -39,6 +43,11 @@ function App() {
       </Router>
     </Provider>
   );
+}
+
+function ProtectedRoute() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  return isAuthenticated ? <AppRouter /> : <Navigate to="/login" replace />;
 }
 
 function HeaderWrapper() {

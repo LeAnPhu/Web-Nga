@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OTPMail;
 
 class AuthController 
 {
@@ -47,7 +48,7 @@ class AuthController
             ]);
 
             DB::commit();
-
+            Mail::to($user->email)->send(new OTPMail($otp, $user, 'user'));
             $token = Auth::guard('user') ->login($user);
 
             Log::info('Người dùng đã được tạo tài khoản thành công'. $user->email);
@@ -134,6 +135,8 @@ class AuthController
             return response()->json(['message' => 'Mã xác thực không chính xác'], 400);
         }
 
+        //Luu trang thai sau xac thuc
+        $user->otp = 0;
         $user->otp_expired = null;
         $user->confirm = true;
         $user->email_verified_at = Carbon::now();

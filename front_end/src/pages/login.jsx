@@ -19,7 +19,7 @@ const Login = () => {
     if (result && result.role) {
       const role = result.role;
       console.log("Role sau đăng nhập:", role);
-  
+      console.log("Email" , email);
       if (role === "admin") {
         console.log("Chuyển hướng đến /admin");
         navigate("/admin");

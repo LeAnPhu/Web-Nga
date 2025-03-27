@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OTPMail;
 
 
 class AuthController 
@@ -48,7 +50,7 @@ class AuthController
             ]);
 
             DB::commit();
-
+            Mail::to($shop_owner->email)->send(new OTPMail($otp, $shop_owner, 'shop_owner'));
             $token = Auth::guard('shop_owner') ->login($shop_owner);
 
             Log::info('Shop đã được tạo tài khoản thành công'. $shop_owner->email);
@@ -109,37 +111,39 @@ class AuthController
         }
 
     // Xác thực OTP
-    public function verifyOTP (Request $request)
+    public function verifyOTP(Request $request)
     {
-            $request -> validate([
-                'email' => 'required|email',
-                'otp' => 'required|digits: 6',
-            ]);
+    
+        $request->validate([
+            'email' => 'required|email',
+            'otp' => 'required|digits:6', 
+        ]);
 
-            $shop_owner = ShopOwner::where('email', $request -> email) ->first();
-            dd($shop_owner);
-            if(!$shop_owner)
-            {
-                return response() -> json(['message' => 'Tài khoản không tồn tại']);
-            }
-          
-            if(Carbon::now() -> gt($shop_owner -> otp_expired))
-            {
-                return response() -> json(['message' => 'Hết thời gian xác thực']);
-            }
 
-            if($shop_owner-> otp !== $request -> otp)
-            {
-                return response() -> json(['message' => 'Mã OTP không chính xác']);
-            }
+        $shop_owner = ShopOwner::where('email', $request->email)->first();
 
-            // Sau khi xac thuc reset data va luu
-            $shop_owner -> otp_expired = null;
-            $shop_owner -> email_verified = Carbon::now();
-            $shop_owner -> save();
+        if (!$shop_owner) {
+            return response()->json(['message' => 'Tài khoản không tồn tại'], 404);
+        }
 
-            return response() -> json(['message' => 'Xác thực thành công']);
 
+        if (Carbon::now()->gt($shop_owner->otp_expired)) {
+            return response()->json(['message' => 'Hết hạn xác thực'], 400);
+        }
+
+    
+        if ((string)$shop_owner->otp !== (string)$request->otp) {
+            return response()->json(['message' => 'Mã xác thực không chính xác'], 400);
+        }
+
+        //Luu trang thai sau xac thuc
+        $shop_owner->otp = 0;
+        $shop_owner->otp_expired = null;
+        $shop_owner->confirm = true;
+        $shop_owner->email_verified_at = Carbon::now();
+        $shop_owner->save();
+
+        return response()->json(['message' => 'Xác thực tài khoản thành công']);
     }
 
 
