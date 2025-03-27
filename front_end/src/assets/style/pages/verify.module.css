@@ -1,0 +1,143 @@
+/* ----- NỀN TỔNG THỂ ----- */
+.verify_container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+  }
+  
+  /* ----- FORM XÁC THỰC OTP ----- */
+  .verify_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 800px;
+    width: 100%;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    border-radius: 12px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  /* ----- HIỆU ỨNG XUẤT HIỆN ----- */
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+
+  /* ----- CỘT FORM OTP ----- */
+  .otp_section {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* ----- TIÊU ĐỀ ----- */
+  h2 {
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  
+  /* ----- INPUT MÃ OTP ----- */
+  .otp_inputs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .otp_inputs input {
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    color: grey;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .otp_inputs input:focus {
+    border-color: #facc15;
+    background: rgba(255, 255, 255, 0.4);
+    outline: none;
+    box-shadow: 0px 0px 8px rgba(250, 204, 21, 0.6);
+  }
+  
+  /* ----- BUTTON XÁC NHẬN ----- */
+  .verify_btn {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    background: linear-gradient(135deg, #2563eb, #9333ea);
+    color: white;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+  }
+  
+  .verify_btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #9333ea, #2563eb);
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.3);
+  }
+
+    /* ----- BUTTON Khasc ----- */
+    .btn_style {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #2563eb, #9333ea);
+        color: white;
+        border-radius: 8px;
+        border: none;
+        transition: all 0.3s ease-in-out;
+        width: auto;
+        max-width: 300px;
+        text-align: center;
+        display: block;
+        margin: 10px auto; 
+    }
+    
+    .btn_style:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #9333ea, #2563eb);
+        box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.3);
+    }
+    
+ 
+  /* ----- THÔNG BÁO LỖI ----- */
+  .text-danger,
+  .text-warning {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /*-----Mã OTP----*/
+  .countdown
+  {
+    text-align: center;
+  }
+  .countdown b {
+    color: red;
+  }

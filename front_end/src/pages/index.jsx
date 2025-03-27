@@ -1,3 +1,8 @@
+// Trang Dang ky , Dang nhap
+export { default as Login } from "./login";
+export { default as Register } from "./register";
+export { default as Forgot_Pass } from "./forgot_password";
+
 // Trang chính
 export { default as HomePage } from './Home/HomePage';
 export { default as About } from './Home/About';
@@ -6,7 +11,6 @@ export { default as CartPage } from './Home/CartPage';
 export { default as CheckoutPage } from './Home/CheckoutPage';
 export {default as  Category} from './Home/Category';
 export {default as OrderHistoryPage} from './Home/OrderHistoryPage';
-export {default as LoginPage} from './Home/LoginPage';
 export {default as ProductDetails} from './Home/ProductDetails';
 export {default as StoreDetail} from './Home/StoreDetail';
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->boolean('isActive')->default(true);
-            $table->integer('otp') -> default(1);
+            $table->integer('otp');
             $table-> boolean('confirm')->default(0);
             $table-> timestamp('otp_expired');
             $table->timestamp('email_verified_at')->nullable();
