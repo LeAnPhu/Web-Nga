@@ -5,8 +5,9 @@ import { register } from "../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import styles from "../assets/style/pages/register.module.css";
-
+import { FaChevronDown } from "react-icons/fa";
 const Register = () => {
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -103,13 +104,22 @@ const Register = () => {
               </Form.Group>
 
               {/* Lựa chọn tài khoản */}
-              <Form.Group className={styles.accountSelectContainer}>
+              <Form.Group 
+                className={`${styles.accountSelectContainer} ${isSelectOpen ? styles.selectOpen : ""}`}
+                onClick={() => setIsSelectOpen(!isSelectOpen)}  
+              >
                 <FaUser className={styles.accountIcon} />
-                <Form.Select value={role} onChange={(e) => setRole(e.target.value)} className={styles.formSelect}>
+                <Form.Select 
+                  value={role} 
+                  onChange={(e) => setRole(e.target.value)}
+                  className={styles.formSelect}
+                >
                   <option value="user">Người dùng</option>
                   <option value="shop">Chủ cửa hàng</option>
                 </Form.Select>
+                <FaChevronDown className={styles.arrowIcon}/> 
               </Form.Group>
+
 
               {/* Nút Đăng ký */}
               <Button type="submit" className={`${styles.register_btn} w-100`}>
