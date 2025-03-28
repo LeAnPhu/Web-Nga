@@ -17,7 +17,7 @@ use App\Mail\OTPMail;
 
 class AuthController 
 {
-    const setTimeExpiry = 2;
+    const setTimeExpiry = 5;
     public function register(Request $request)
     {
         $val = Validator::make($request -> all(),[
@@ -192,6 +192,57 @@ class AuthController
             'role' => 'shop_owner'
         ]);
     }
+
+    public function forgotPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:shop_owners,email',
+        ]);
+
+        $shopOwner = ShopOwner::where('email', $request->email)->first();
+
+        
+        $otp = (string) rand(100000, 999999);
+        $otpExpiredAt = Carbon::now()->addMinutes(5);
+
+    
+        $shopOwner->otp = $otp;
+        $shopOwner->otp_expired = $otpExpiredAt;
+        $shopOwner->save();
+
+        Mail::to($shopOwner->email)->send(new OTPMail($otp, $shopOwner, $shopOwner->role));
+
+        return response()->json([
+            'message' => 'Mã OTP đã được gửi đến email của bạn.',
+            'email' => $shopOwner->email,
+            'role' => $shopOwner->role,
+            'otp' =>  $shopOwner->otp
+        ]);
+    }
+
+     
+     /**
+     * Câp nhật mật khâu
+     */
+    public function resetPassword(Request $request)
+    {
+       
+        $request->validate([
+            'email' => 'required|email|exists:shop_owners,email',
+            'password' => 'required|string|min:6|confirmed', 
+        ]);
+
+        $shopOwner = ShopOwner::where('email', $request->email)->first();
+
+        if (!$shopOwner) {
+            return response()->json(['message' => 'Không tìm thấy tài khoản.'], 404);
+        }
+        $shopOwner->password = Hash::make($request->password);
+        $shopOwner->save();
+
+        return response()->json(['message' => 'Mật khẩu đã được đặt lại thành công.']);
+    }
+
 
     /**
      * Đăng xuất admin

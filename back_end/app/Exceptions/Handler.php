@@ -41,10 +41,12 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function register()
+    public function render($request, Throwable $exception)
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        return response()->json([
+            'success' => false,
+            'message' => $exception->getMessage(),
+        ], 500);
     }
+
 }

@@ -16,7 +16,7 @@ use App\Mail\OTPMail;
 
 class AuthController 
 {
-    const setTimeExpiry = 2;
+    const setTimeExpiry = 5;
     public function register(Request $request)
     {
         $val = Validator::make($request -> all(),[
@@ -112,10 +112,11 @@ class AuthController
     // Xác thực
     public function verifyOTP(Request $request)
     {
-    
+        Log::info('🔍 Dữ liệu nhận được: ' . json_encode($request->all()));
+
         $request->validate([
             'email' => 'required|email',
-            'otp' => 'required|digits:6', 
+            'otp' => 'required|digits:6',
         ]);
 
 
@@ -134,7 +135,7 @@ class AuthController
         if ((string)$user->otp !== (string)$request->otp) {
             return response()->json(['message' => 'Mã xác thực không chính xác'], 400);
         }
-
+        Log::info('🔍 Xác thực OTP:', $request->all());
         //Luu trang thai sau xac thuc
         $user->otp = 0;
         $user->otp_expired = null;
@@ -190,6 +191,62 @@ class AuthController
             'role' => 'user'
         ]);
     }
+
+    /**
+     * Quên mật khẩu 
+     */
+
+     public function forgotPassword(Request $request)
+     {
+         $request->validate([
+             'email' => 'required|email|exists:users,email',
+         ]);
+ 
+         $user = User::where('email', $request->email)->first();
+ 
+         
+         $otp = (string) rand(100000, 999999);
+         $otpExpiredAt = Carbon::now()->addMinutes(5);
+ 
+     
+         $user->otp = $otp;
+         $user->otp_expired = $otpExpiredAt;
+         $user->save();
+ 
+         Mail::to($user->email)->send(new OTPMail($otp, $user, $user->role));
+ 
+         return response()->json([
+             'message' => 'Mã OTP đã được gửi đến email của bạn.',
+             'email' => $user->email,
+             'role' => $user->role,
+         ]);
+     }
+ 
+      
+      /**
+      * Câp nhật mật khâu
+      */
+      public function resetPassword(Request $request)
+    {
+       
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|string|min:6|confirmed', 
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'Không tìm thấy tài khoản.'], 404);
+        }
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json(['message' => 'Mật khẩu đã được đặt lại thành công.']);
+    }
+
+ 
+
 
     /**
      * Đăng xuất user

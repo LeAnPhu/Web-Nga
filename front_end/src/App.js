@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 import AppRouter from "./routes/AppRouter";
 import AdminRoutes from "./routes/Admin/AdminRoutes";
 import ShopRouter from "./routes/Shop/ShopRouter";
-import { Login, Register, Forgot_Pass } from "./pages";
+import { Login, Register, ForgotPassword, ResetPassword } from "./pages";
 import PrivateRouter from "./routes/PrivateRouter";
 import VerifyOTP from "./pages/verifyOTP";
 function App() {
@@ -24,7 +24,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register/>} />
             <Route path="/verify" element={<VerifyOTP/>} />
-            <Route path="/forgot_password" element={<Forgot_Pass/>} />
+            <Route path="/forgot_password" element={<ForgotPassword/>} />
+            <Route path="/reset-password" element={<ResetPassword/>} />
             <Route path="/*" element={<AppRouter />} />
 
             {/* Đảm bảo PrivateRouter kiểm tra role chính xác */}
@@ -52,19 +53,19 @@ function ProtectedRoute() {
 
 function HeaderWrapper() {
   const location = useLocation();
-  const hideHeaderRoutes = ["/login","/register","/forgot_password", "/store", "/cart", "/admin", "/shop", "/product","/verify"];
+  const hideHeaderRoutes = ["/login","/register","/forgot_password","/reset-password" ,"/store", "/cart", "/admin", "/shop", "/product","/verify"];
   return hideHeaderRoutes.some((route) => location.pathname.startsWith(route)) ? null : <Header />;
 }
 
 function FooterWrapper() {
   const location = useLocation();
-  const hideFooterRoutes = ["/login", "/admin", "/shop","/register","/forgot_password","/verify"];
+  const hideFooterRoutes = ["/login", "/admin", "/shop","/register","/forgot_password","/reset-password","/verify"];
   return hideFooterRoutes.some((route) => location.pathname.startsWith(route)) ? null : <Footer />;
 }
 
 function ChatWidgetHide() {
   const location = useLocation();
-  const hideFooterRoutes = ["/login","/register","/forgot_password","/verify"];
+  const hideFooterRoutes = ["/login","/register","/forgot_password","/reset-password","/verify"];
   return hideFooterRoutes.some((route) => location.pathname.startsWith(route)) ? null : <ChatWidget />;
 }
 

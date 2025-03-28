@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { verifyOtp, resendOtp } from "../redux/actions/authActions";
 import { FaKey } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -10,30 +10,31 @@ import styles from "../assets/style/pages/verify.module.css";
 
 const VerifyOTP = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-  const [timeLeft, setTimeLeft] = useState(120); // 
+  const [timeLeft, setTimeLeft] = useState(60);
   const inputRefs = useRef([]);
-
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const { error, otpExpired } = useSelector((state) => state.auth);
-
-  // Nhận email và role từ trang đăng ký
   const email = location.state?.email || "";
-  const role = location.state?.role || "user"; 
+  const role = location.state?.role ?? "user"; 
+  
+  useEffect(() => {
+    if (!email) {
+      toast.error("Vui lòng nhập email trước!");
+      navigate("/login");
+    }
+  }, [email, navigate]);
 
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
-    } else {
-      dispatch({ type: "OTP_EXPIRED" });
     }
-  }, [timeLeft, dispatch]);
+  }, [timeLeft]);
 
   const handleChange = (index, value) => {
-    if (!/^[0-9]?$/.test(value) || otpExpired) return;
+    if (!/^[0-9]?$/.test(value)) return;
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
@@ -51,37 +52,29 @@ const VerifyOTP = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (otpExpired) return;
-
     const otpValue = otp.join("");
     if (otpValue.length !== 6) {
       toast.error("Mã OTP phải có 6 chữ số!");
       return;
     }
 
-    // Post len Api trong authActionauthAction
     const result = await dispatch(verifyOtp(email, otpValue, role));
-
     if (result.success) {
-      toast.success("Xác thực OTP thành công! Đang chuyển hướng...", {
-        position: "top-right",
-        autoClose: 2000,
-      });
-
+      toast.success("Xác thực OTP thành công! Đang chuyển hướng...");
       setTimeout(() => {
-        navigate("/login");
-      }, 2500); 
+        navigate("/reset-password", { state: { email, role } });
+      }, 2000);
+    } else {
+      toast.error("Mã OTP không hợp lệ hoặc đã hết hạn!");
     }
   };
 
   const handleResendOTP = () => {
+    if (!email) return toast.error("Không thể gửi lại OTP vì thiếu email!");
     dispatch(resendOtp(email, role));
     setOtp(["", "", "", "", "", ""]);
-    setTimeLeft(120);
-    toast.info("Đã gửi lại OTP, vui lòng kiểm tra email.", {
-      position: "top-center",
-      autoClose: 2000,
-    });
+    setTimeLeft(60);
+    toast.info("Mã OTP mới đã được gửi!");
   };
 
   return (
@@ -107,28 +100,25 @@ const VerifyOTP = () => {
                     onChange={(e) => handleChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
                     ref={(el) => (inputRefs.current[index] = el)}
-                    disabled={otpExpired}
+                    disabled={timeLeft === 0}
                   />
                 ))}
               </div>
 
-              {error && <p className="text-danger text-center">{error}</p>}
-              {otpExpired ? (
-                <p className={styles.otp_expired}>Mã OTP đã hết hạn, vui lòng gửi lại.</p>
-              ) : (
-                <p className={styles.countdown}>Mã OTP hết hạn sau: <b>{timeLeft}s</b></p>
-              )}
+              <p className={styles.countdown}>
+                {timeLeft > 0 ? `OTP hết hạn sau: ${timeLeft}s` : "Mã OTP đã hết hạn!"}
+              </p>
 
-              <Button type="submit" className={`${styles.verify_btn} w-50 mt-3`} disabled={otpExpired}>
+              <Button type="submit" className={`${styles.verify_btn} w-50 mt-3`} disabled={timeLeft === 0}>
                 Xác nhận
               </Button>
             </Form>
 
-            <Button onClick={handleResendOTP} className={`${styles.btn_style} w-30 mt-3`}>
+            <Button onClick={handleResendOTP} className={`${styles.btn_style} w-50 mt-3`} disabled={timeLeft > 0}>
               Gửi lại OTP
             </Button>
 
-            <Button onClick={() => navigate("/login")} className={`${styles.btn_style} w-30 mt-3`}>
+            <Button onClick={() => navigate("/login")} className={`${styles.btn_style} w-50 mt-3`}>
               Quay lại
             </Button>
           </Col>

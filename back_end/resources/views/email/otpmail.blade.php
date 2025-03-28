@@ -35,10 +35,12 @@
         .otp-container {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 10px;
             margin: 20px 0;
         }
         .otp-digit {
+
             font-size: 28px;
             font-weight: bold;
             color: white;
@@ -96,9 +98,9 @@
             @endforeach
         </div>
 
-        <p>Mã OTP này sẽ hết hạn sau <strong>2 phút</strong>. Vui lòng không chia sẻ mã này với bất kỳ ai.</p>
+        <p>Mã OTP này sẽ hết hạn sau <strong>{{$user->otp_expired}}</strong>. Vui lòng không chia sẻ mã này với bất kỳ ai.</p>
 
-        <a href="#" class="button">Xác thực ngay</a>
+        <a href="http://localhost:3000/verify" class="button">Xác thực ngay</a>
 
         <p class="footer">Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.<br>Admin Hỗ trợ: LE_PHU_AN_@_SIUUU.COM</p>
     </div>

@@ -1,5 +1,9 @@
-import {LOGIN_SUCCESS,LOGIN_FAIL,REGISTER_SUCCESS,REGISTER_FAIL,
-  VERIFY_OTP_SUCCESS,VERIFY_OTP_FAIL,OTP_EXPIRED,RE_REGISTER_SUCCESS,RE_REGISTER_FAIL,} from "../types";
+import {LOGIN_SUCCESS,LOGIN_FAIL,
+  REGISTER_SUCCESS,REGISTER_FAIL,
+  VERIFY_OTP_SUCCESS,VERIFY_OTP_FAIL,OTP_EXPIRED,
+  RESET_PASSWORD_SUCCESS,RESET_PASSWORD_FAIL,
+  RE_REGISTER_SUCCESS,RE_REGISTER_FAIL,
+FORGOT_PASSWORD_FAIL,FORGOT_PASSWORD_SUCCESS} from "../types";
 
 
 const initialState = {
@@ -81,7 +85,36 @@ const authReducer = (state = initialState, action) => {
         ...state,
         otpExpired: true,
       };
+    
+    case FORGOT_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        isAuthenticated: true,
+        error: null,
+      };
 
+    case FORGOT_PASSWORD_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      }
+    
+    case RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        isAuthenticated: true,
+        error: null,
+      };
+
+    case RESET_PASSWORD_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      }
     case "LOGOUT":
       return {
         ...state,
