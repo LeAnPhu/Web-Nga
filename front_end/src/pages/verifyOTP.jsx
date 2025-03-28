@@ -20,7 +20,7 @@ const VerifyOTP = () => {
 
   const email = location.state?.email || "";
   const role = location.state?.role ?? "user";
-  const from = location.state?.from ?? "register"; // "forgot" hoặc "register"
+  const from = location.state?.from ?? "register"; 
 
   useEffect(() => {
     if (!email) {
@@ -68,7 +68,7 @@ const VerifyOTP = () => {
     if (result.success) {
       toast.success("Xác thực OTP thành công! Đang chuyển hướng...");
       setTimeout(() => {
-        if (from === "forgot") {
+        if (from === "forgot_password") {
           navigate("/reset-password", { state: { email, role } });
         } else {
           navigate("/login");

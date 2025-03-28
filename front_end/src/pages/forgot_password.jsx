@@ -36,6 +36,7 @@ const ForgotPassword = () => {
           state: {
             email: result.email,
             role: result.role,
+             from: "forgot_password"
           },
         });
       } else {

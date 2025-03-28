@@ -22,7 +22,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Role được chọn:", role);
     if (password !== confirmPassword) {
       setErrorMsg("Mật khẩu không khớp!");
       return;
@@ -33,7 +33,7 @@ const Register = () => {
     const result = await dispatch(register(name, email, password, role));
     
     if (result?.success) {
-      navigate("/verify", { state: { email, role  } });
+      navigate("/verify", { state: { email, role , from: "register"  } });
       setLoading(false);
     }
     else {
@@ -119,7 +119,7 @@ const Register = () => {
                   className={styles.formSelect}
                 >
                   <option value="user">Người dùng</option>
-                  <option value="shop">Chủ cửa hàng</option>
+                  <option value="shop_owner">Chủ cửa hàng</option>
                 </Form.Select>
                 <FaChevronDown className={styles.arrowIcon}/> 
               </Form.Group>

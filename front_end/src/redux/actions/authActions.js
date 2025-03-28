@@ -45,7 +45,7 @@ export const register = (name,email, password, role) => async (dispatch) => {
         ? "http://127.0.0.1:8000/api/shop_owner/register"
         : "http://127.0.0.1:8000/api/user/register";
 
-    const response = await axios.post(apiUrl, { name , email, password });
+    const response = await axios.post(apiUrl, { name , email, password , role});
 
     dispatch({ type: REGISTER_SUCCESS, payload: response.data });
 
