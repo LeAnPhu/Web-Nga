@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { verifyOtp, resendOtp } from "../redux/actions/authActions";
@@ -11,14 +11,17 @@ import styles from "../assets/style/pages/verify.module.css";
 const VerifyOTP = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [timeLeft, setTimeLeft] = useState(60);
+  const [loading, setLoading] = useState(false); 
   const inputRefs = useRef([]);
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+
   const email = location.state?.email || "";
-  const role = location.state?.role ?? "user"; 
-  
+  const role = location.state?.role ?? "user";
+  const from = location.state?.from ?? "register"; // "forgot" hoặc "register"
+
   useEffect(() => {
     if (!email) {
       toast.error("Vui lòng nhập email trước!");
@@ -58,11 +61,18 @@ const VerifyOTP = () => {
       return;
     }
 
+    setLoading(true);
     const result = await dispatch(verifyOtp(email, otpValue, role));
+    setLoading(false);
+
     if (result.success) {
       toast.success("Xác thực OTP thành công! Đang chuyển hướng...");
       setTimeout(() => {
-        navigate("/reset-password", { state: { email, role } });
+        if (from === "forgot") {
+          navigate("/reset-password", { state: { email, role } });
+        } else {
+          navigate("/login");
+        }
       }, 2000);
     } else {
       toast.error("Mã OTP không hợp lệ hoặc đã hết hạn!");
@@ -100,7 +110,7 @@ const VerifyOTP = () => {
                     onChange={(e) => handleChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
                     ref={(el) => (inputRefs.current[index] = el)}
-                    disabled={timeLeft === 0}
+                    disabled={timeLeft === 0 || loading}
                   />
                 ))}
               </div>
@@ -109,16 +119,23 @@ const VerifyOTP = () => {
                 {timeLeft > 0 ? `OTP hết hạn sau: ${timeLeft}s` : "Mã OTP đã hết hạn!"}
               </p>
 
-              <Button type="submit" className={`${styles.verify_btn} w-50 mt-3`} disabled={timeLeft === 0}>
-                Xác nhận
+              <Button type="submit" className={`${styles.verify_btn} w-50 mt-3`} disabled={timeLeft === 0 || loading}>
+                {loading ? (
+                  <>
+                    <Spinner size="sm" animation="border" className="me-2" />
+                    Đang xác thực...
+                  </>
+                ) : (
+                  "Xác nhận"
+                )}
               </Button>
             </Form>
 
-            <Button onClick={handleResendOTP} className={`${styles.btn_style} w-50 mt-3`} disabled={timeLeft > 0}>
+            <Button onClick={handleResendOTP} className={`${styles.btn_style} w-50 mt-3`} disabled={timeLeft > 0 || loading}>
               Gửi lại OTP
             </Button>
 
-            <Button onClick={() => navigate("/login")} className={`${styles.btn_style} w-50 mt-3`}>
+            <Button onClick={() => navigate("/login")} className={`${styles.btn_style} w-50 mt-3`} disabled={loading}>
               Quay lại
             </Button>
           </Col>

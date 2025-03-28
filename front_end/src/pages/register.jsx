@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button,Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,8 @@ import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import styles from "../assets/style/pages/register.module.css";
 import { FaChevronDown } from "react-icons/fa";
 const Register = () => {
+
+  const [loading, setLoading] = useState(false); 
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,10 +29,12 @@ const Register = () => {
     }
     setErrorMsg(""); 
 
+    setLoading(true);
     const result = await dispatch(register(name, email, password, role));
     
     if (result?.success) {
       navigate("/verify", { state: { email, role  } });
+      setLoading(false);
     }
     else {
       setErrorMsg(result.error);
@@ -123,7 +127,14 @@ const Register = () => {
 
               {/* Nút Đăng ký */}
               <Button type="submit" className={`${styles.register_btn} w-100`}>
-                Đăng ký
+                {loading ? (
+                      <>
+                        <Spinner size="sm" animation="border" className="me-2" />
+                                    Đang xác thực...
+                        </>
+                      ) : (
+                            "Xác nhận"
+                      )}
               </Button>
             </Form>
 
