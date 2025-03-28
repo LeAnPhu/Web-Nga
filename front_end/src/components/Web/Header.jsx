@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, Image , Button, Row } from "react-bootstrap";
 import styles from "../../assets/style/components/header/header.module.css";
 import { BsCart3 } from "react-icons/bs";
+import { FaSignOutAlt} from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Location} from "..";
 const Header = () => {
@@ -46,8 +47,12 @@ const Header = () => {
 
           {/* Avatar */}
             <div className = {styles.avatar}>
-            <Image src ={require("../../assets/image/avatar.jpg")}></Image>
-          </div>
+              <Image src ={require("../../assets/image/avatar.jpg")}></Image>
+            </div>
+          {/*Logout*/}
+            <Link to="/login" className={`${styles.icon} ml-3`}>
+                      <FaSignOutAlt size={24} />
+            </Link>
         </Container>
       </Navbar>
       <div className={`text-center mt-2 ${styles.infoBar}`}>
